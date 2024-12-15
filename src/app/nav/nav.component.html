@@ -1,0 +1,71 @@
+<header class="p-3 mb-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      
+      <!-- Logo -->
+      <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <img src="https://www.pngitem.com/pimgs/m/42-423728_pharmacy-medicine-doctor-medic-png-image-blue-pharmacy.png" 
+             alt="Logo" width="40" height="40" class="me-2">
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 text-primary">LifeCARE +</a></li>
+      </ul>
+      
+      <!-- Navigation Menu -->
+      <div style="display: flex; justify-content: end;">
+        @if(accountService.currentUser()){
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
+          <li><a href="#" class="nav-link px-2 text-white">HOME</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+        </ul>
+      }
+      </div>
+
+
+
+    @if(accountService.currentUser()){
+      <div dropdown class="dropdown">
+        <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">Welcome user</a>
+        <div *dropdownMenu class="dropdown-menu">
+          <a class="dropdown-item">Edit profile</a>
+          <div class="divider"></div>
+          <a class="dropdown-item" (click)="logout()" >Logout</a>
+        </div>
+        
+      </div>
+    }
+
+      <!-- Login Form -->
+      @if(!accountService.currentUser()){
+      <form (ngSubmit)="onLoginSubmit()" class="d-flex ms-3 align-items-center">
+        <div class="me-3">
+          <input 
+            type="email" 
+            [(ngModel)]="loginData.email" 
+            name="email" 
+            required 
+            class="form-control" 
+            placeholder="Email">
+        </div>
+        <div class="me-3">
+          <input 
+            type="password" 
+            [(ngModel)]="loginData.password" 
+            name="password" 
+            required 
+            minlength="6" 
+            class="form-control" 
+            placeholder="Password">
+        </div>
+        <button 
+          type="submit" 
+          class="btn btn-outline-light"
+          [disabled]="!loginData.email || !loginData.password">Login</button>
+      </form>
+    }
+    </div>
+  </div>
+</header>
