@@ -10,7 +10,7 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavComponent, HomeComponent,RouterOutlet],  // Add FormsModule here
+  imports: [NavComponent,RouterOutlet],  // Add FormsModule here
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
