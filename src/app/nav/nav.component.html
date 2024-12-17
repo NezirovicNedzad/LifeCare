@@ -3,23 +3,23 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       
       <!-- Logo -->
-      <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+      <a routerLink="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <img src="https://www.pngitem.com/pimgs/m/42-423728_pharmacy-medicine-doctor-medic-png-image-blue-pharmacy.png" 
              alt="Logo" width="40" height="40" class="me-2">
       </a>
 
       <!-- Navigation Links -->
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 text-primary">LifeCARE +</a></li>
+        <li><a routerLink="/" class="nav-link px-2 text-primary">LifeCARE +</a></li>
       </ul>
       
       <!-- Navigation Menu -->
       <div style="display: flex; justify-content: end;">
         @if(accountService.currentUser()){
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
-          <li><a href="#" class="nav-link px-2 text-white">HOME</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+          <li><a routerLinkActive="active" routerLink="/members" class="nav-link px-2 text-gray">MEMBERS</a></li>
+          <li><a routerLinkActive="active" routerLink="/list" class="nav-link px-2 text-gray">LISTS</a></li>
+          <li><a routerLinkActive="active" routerLink="/messages" class="nav-link px-2 text-gray">MESSAGES</a></li>
         </ul>
       }
       </div>
@@ -28,7 +28,7 @@
 
     @if(accountService.currentUser()){
       <div dropdown class="dropdown">
-        <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">Welcome user</a>
+        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray">PROFILE</a>
         <div *dropdownMenu class="dropdown-menu">
           <a class="dropdown-item">Edit profile</a>
           <div class="divider"></div>
