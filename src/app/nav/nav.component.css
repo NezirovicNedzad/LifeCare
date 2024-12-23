@@ -10,3 +10,39 @@
 .text-gray:hover{
     color:white;
 }
+.nav{
+    background-color: #0D98BA!important;
+}
+.logo{
+    color: white !important;
+    font-family: 'Montserrat', sans-serif;
+    
+    font-weight: bold;
+     /* Blue theme for trust */
+    margin: 20px;
+
+}
+
+.itemDropdown{
+    padding: 10px;
+   
+    color: #004c5c !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+   
+}
+.itemDropdown:active{
+    background-color: #3EB489;
+}
+.dropdown-menu{
+ 
+    padding: 0!important;
+    background-color:#EAF8FC;
+    color: #004c5c !important;
+    
+}
+
+.icon{
+   
+    margin-right: 5px;
+}
+/* Dropdown Menu Animation */

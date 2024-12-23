@@ -8,7 +8,7 @@ import {ValidationE} from '../_models/validation'
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, JsonPipe, NgIf, TextInputComponent],
+  imports: [ReactiveFormsModule, NgIf, TextInputComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       username:['',Validators.required],
       email:['',[Validators.email,Validators.required]],
       phone:['',Validators.required],
-      password:['',[Validators.required,Validators.minLength(4),Validators.maxLength(10)]],
+      password:['',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
       confirmPassword:['',[Validators.required,this.matchValues('password')]]
     });
     this.registerForm.controls['password'].valueChanges.subscribe({
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
 }
 cancel()
 {
-  this.cancelRegister.emit(false);
+  this.router.navigateByUrl('');
 }
 
 }

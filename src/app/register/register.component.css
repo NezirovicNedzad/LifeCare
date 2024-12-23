@@ -1,0 +1,25 @@
+.center{
+    display: flex;
+    justify-content: center;
+}
+.registerForm{
+    background-color: aqua;
+   background-image: url('/img/background.jpg');
+   background-size: cover;
+   border-radius: 20px;
+   text-align: center;
+   padding: 40px;
+   width: 550px;  
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: black;
+}
+.text{
+    padding: 10px;
+}
+.btnRed{
+    background-color:red;
+}
+.btnB{
+    color: black;
+}

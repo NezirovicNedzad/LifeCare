@@ -1,0 +1,42 @@
+<div class="container">
+<div class="login">
+
+    <h3>Login</h3>
+
+  
+        <form (ngSubmit)="onLoginSubmit()" class="loginForm">
+            <div >
+             <img src="img/ll.png" width="100" height="100" class="imgLogin" />
+              <input 
+                type="email" 
+                [(ngModel)]="loginData.email" 
+                name="email" 
+                required 
+                class="form-control loginInput" 
+                placeholder="Email">
+                
+            </div>
+            <div >
+              <input 
+                type="password" 
+                [(ngModel)]="loginData.password" 
+                name="password" 
+                required 
+                minlength="6" 
+                class="form-control loginInput" 
+                placeholder="Password">
+            </div>
+          
+            <button 
+              type="submit" 
+              class="btn btn-outline-light buttonLogin"
+              [disabled]="!loginData.email || !loginData.password">Login</button>
+          </form>
+    </div>
+
+       
+
+
+</div>
+
+

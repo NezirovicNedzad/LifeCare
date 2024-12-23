@@ -1,16 +1,16 @@
-<header class="p-3 mb-3 text-bg-dark">
+<header class="mb-3 text-bg-dark nav">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       
       <!-- Logo -->
-      <a routerLink="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <img src="https://www.pngitem.com/pimgs/m/42-423728_pharmacy-medicine-doctor-medic-png-image-blue-pharmacy.png" 
-             alt="Logo" width="40" height="40" class="me-2">
+      <a routerLink="/" class="d-flex align-items-end mb-2 mb-lg-0   text-decoration-none">
+        <img src="img/LifeCare.png" 
+             alt="Logo" width="50" height="50" >
       </a>
 
       <!-- Navigation Links -->
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a routerLink="/" class="nav-link px-2 text-primary">LifeCARE +</a></li>
+        <li><a routerLink="/" class="nav-link px-2 logo">LifeCARE +</a></li>
       </ul>
       
       <!-- Navigation Menu -->
@@ -18,12 +18,12 @@
        
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
        
-          @if(accountService.currentUser()){
-          <li><a routerLinkActive="active" routerLink="/members" class="nav-link px-2 text-gray">MEMBERS</a></li>
-          <li><a routerLinkActive="active" routerLink="/list" class="nav-link px-2 text-gray">LISTS</a></li>
-          <li><a routerLinkActive="active" routerLink="/messages" class="nav-link px-2 text-gray">MESSAGES</a></li>
+           @if(accountService.currentUser()){
+          <li><a routerLinkActive="active" routerLink="/members" class="nav-link px-2 text-gray">HOME</a></li>
+          <li><a routerLinkActive="active" routerLink="/list" class="nav-link px-2 text-gray">TRANSACTIONS</a></li>
+          <li><a routerLinkActive="active" routerLink="/messages" class="nav-link px-2 text-gray">SOME</a></li>
           }
-          <li><a routerLinkActive="active" routerLink="/errors" class="nav-link px-2 text-gray">Errors</a></li>
+          <!-- <li><a routerLinkActive="active" routerLink="/errors" class="nav-link px-2 text-gray">Errors</a></li> -->
         </ul>
       
       </div>
@@ -32,11 +32,12 @@
 
     @if(accountService.currentUser()){
       <div dropdown class="dropdown">
-        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray">PROFILE</a>
+        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray ">PROFILE</a>
         <div *dropdownMenu class="dropdown-menu">
-          <a class="dropdown-item">Edit profile</a>
+          <a class="dropdown-item itemDropdown"><i class="bi bi-person-fill icon"></i>Edit profile</a>
           <div class="divider"></div>
-          <a class="dropdown-item" (click)="logout()" >Logout</a>
+          <a class="dropdown-item itemDropdown" (click)="logout()" ><i class="bi bi-box-arrow-right icons"></i>
+            Logout</a>
         </div>
         
       </div>
@@ -44,31 +45,8 @@
 
       <!-- Login Form -->
       @if(!accountService.currentUser()){
-      <form (ngSubmit)="onLoginSubmit()" class="d-flex ms-3 align-items-center">
-        <div class="me-3">
-          <input 
-            type="email" 
-            [(ngModel)]="loginData.email" 
-            name="email" 
-            required 
-            class="form-control" 
-            placeholder="Email">
-        </div>
-        <div class="me-3">
-          <input 
-            type="password" 
-            [(ngModel)]="loginData.password" 
-            name="password" 
-            required 
-            minlength="6" 
-            class="form-control" 
-            placeholder="Password">
-        </div>
-        <button 
-          type="submit" 
-          class="btn btn-outline-light"
-          [disabled]="!loginData.email || !loginData.password">Login</button>
-      </form>
+    
+      <li><a routerLinkActive="active" routerLink="" class="nav-link px-2 text-gray">LOGIN</a></li>
     }
     </div>
   </div>
