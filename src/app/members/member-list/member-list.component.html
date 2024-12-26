@@ -1,1 +1,29 @@
-<p>member-list works!</p>
+<div class="all">
+
+
+    <p>member-list works!</p>
+    <a routerLink="/addMed">Dodaj lek</a>
+    <div class="row">
+    
+        <div class="cont">
+            @for (lek of lekovi; track lek.id) {
+                <div class="item">
+                    <div class="begin"><p class="naslov">{{lek.naziv}}</p>
+
+                     @if(lek.naRecept)
+                     {
+                        <div class="recept">Na recept!</div>
+                     }
+
+                    </div>
+                    <p>{{lek.opis}}</p>
+                    <p>Proizvodjac :{{lek.proizvodjac}}</p>
+                    <img src="{{lek.photoUrl}}" width="200" height="200">
+                    <p>Cena: {{lek.cena}}.00din</p>
+                    <button class="naruci">Naruci</button>
+                </div>
+               
+            }
+        </div>
+    </div>
+</div>

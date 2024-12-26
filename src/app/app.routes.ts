@@ -10,6 +10,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AddLekComponent } from './add-lek/add-lek.component';
 
 export const routes: Routes = [
 
@@ -26,6 +27,7 @@ export const routes: Routes = [
         {path:'members/:id',component:MemberDetailComponent},
         {path:'list',component:ListsComponent},
         {path:'messages',component:MessagesComponent},
+        {path:'addMed',component:AddLekComponent}
 
     ]
 
