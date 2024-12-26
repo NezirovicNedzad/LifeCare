@@ -16,11 +16,11 @@
                      }
 
                     </div>
-                    <p>{{lek.opis}}</p>
-                    <p>Proizvodjac :{{lek.proizvodjac}}</p>
+                   
                     <img src="{{lek.photoUrl}}" width="200" height="200">
-                    <p>Cena: {{lek.cena}}.00din</p>
-                    <button class="naruci">Naruci</button>
+                    <p class="opis">{{lek.opis.slice(0,20)}} ...</p>
+                    <p class="cena">Cena: {{lek.cena}}.00din</p>
+                    <button class="naruci" (click)="detalji(lek.id)" >Detalji</button>
                 </div>
                
             }

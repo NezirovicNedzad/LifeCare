@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LekService } from '../../_services/lek.service';
 import { Lek } from '../../_models/lek';
 
@@ -7,11 +7,12 @@ import { Lek } from '../../_models/lek';
   selector: 'app-member-list',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './member-list.component.html',
-  styleUrl: './member-list.component.css'
+  templateUrl: './lekovi.html',
+  styleUrl: './lekovi.css'
 })
-export class MemberListComponent implements OnInit {
+export class LekListComponent implements OnInit {
   
+  private router=inject(Router)
   private lekService=inject(LekService);
   lekovi:Lek[]=[];
   ngOnInit(): void {
@@ -22,6 +23,10 @@ export class MemberListComponent implements OnInit {
     this.lekService.getLekovi().subscribe({
       next:lekovi=>this.lekovi=lekovi
     })
+  }
+  detalji(id:number)
+  {
+    this.router.navigateByUrl(`/lekovi/${id}`)
   }
 
 }

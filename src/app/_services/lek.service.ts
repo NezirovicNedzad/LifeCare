@@ -20,7 +20,7 @@ private accountService=inject(AccountService);
 
   getLek(id:number)
   {
-    return this.http.get<Lek>(this.baseUrl+`lek/${id}`,this.getHttpOptions())
+    return this.http.get<Lek>(this.baseUrl+'lek/'+id,this.getHttpOptions())
   }
 
   getHttpOptions(){

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { MemberListComponent } from './members/member-list/member-list.component';
-import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { LekListComponent } from './lekovi/lekovi-list/lekovi-list.component';
+
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { authGuard } from './_guards/auth.guard';
@@ -11,6 +11,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddLekComponent } from './add-lek/add-lek.component';
+import { LekoviDetailsComponent } from './lekovi/lekovi-details/lekovi-details.component';
 
 export const routes: Routes = [
 
@@ -23,8 +24,8 @@ export const routes: Routes = [
     runGuardsAndResolvers:'always',
     canActivate:[authGuard],
     children:[
-        {path:'members',component:MemberListComponent},
-        {path:'members/:id',component:MemberDetailComponent},
+        {path:'lekovi',component:LekListComponent},
+        {path:'lekovi/:id',component:LekoviDetailsComponent},
         {path:'list',component:ListsComponent},
         {path:'messages',component:MessagesComponent},
         {path:'addMed',component:AddLekComponent}

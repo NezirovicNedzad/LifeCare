@@ -1,0 +1,40 @@
+.cont{
+
+    display: flex;
+    margin-top: 40px;
+}
+
+.firs{
+    flex: 1;
+}
+.slika
+{
+    display: flex;
+    justify-content: center;
+  
+    flex: 3;
+}
+.opis{
+flex: 3;
+   padding: 20px;
+  
+}
+.desc{
+ background-color: #b1daf3;
+ padding: 20px;
+ border-radius: 20px;
+
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
+ 
+}
+
+.cap{
+    color:white;
+    font-size: 20px;
+    margin-right:5px;
+}
+.check{
+    color: green;
+    font-size: 18px;
+    margin-right: 10px;
+}

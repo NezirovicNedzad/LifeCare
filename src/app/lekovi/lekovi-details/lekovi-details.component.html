@@ -1,0 +1,28 @@
+<div class="container">
+
+<div class="cont">
+    <div class="first"></div>
+    <div class="slika">
+<img src="{{lek.photoUrl}}" width="450" height="400">
+    </div>
+    <div class="opis">
+    
+        <h3>{{lek.naziv}}</h3>
+
+        @if(lek.kolicina>0)
+        {
+         <p><i class="bi bi-check-square-fill check"></i>Na stanju</p>
+        }
+        @else{
+            <p><i class="bi bi-file-excel-fill"></i> Nažalost nije na stanju!</p>
+        }
+       <div class="desc">
+     
+        <p> <i class="bi bi-capsule cap"></i>{{lek.opis}}</p>
+       </div> 
+       
+
+    </div>
+</div>
+
+</div>
