@@ -3,24 +3,40 @@
 <div class="cont">
     <div class="first"></div>
     <div class="slika">
-<img src="{{lek.photoUrl}}" width="450" height="400">
+<img src="{{lek?.photoUrl}}" width="450" height="400">
     </div>
     <div class="opis">
     
-        <h3>{{lek.naziv}}</h3>
-
-        @if(lek.kolicina>0)
+        <h3>{{lek?.naziv}}</h3>
+        <p>Proizvodjač:{{lek?.proizvodjac}}</p>
+        @if(lek?.kolicina>0)
         {
          <p><i class="bi bi-check-square-fill check"></i>Na stanju</p>
         }
         @else{
-            <p><i class="bi bi-file-excel-fill"></i> Nažalost nije na stanju!</p>
+            <p><i class="bi bi-file-excel-fill"></i> Trenutno nemamo ovaj lek!</p>
         }
        <div class="desc">
      
-        <p> <i class="bi bi-capsule cap"></i>{{lek.opis}}</p>
-       </div> 
-       
+        <p> <i class="bi bi-capsule cap"></i>{{lek?.opis}}</p>
+       </div>
+       @if(lek?.naRecept){
+
+        <div class="recept">
+            <p>Neki lekovi zahtevaju recept kako bi se osiguralo da se koriste na pravilan i bezbedan način. </p>
+            <p>Ovaj lek zahteva recept!</p>
+        </div> 
+       }
+     
+       <div class="cena">
+        <p >Cena:{{lek?.cena}}din</p>
+       </div>
+       <div class="quantity-controls">
+        <button class="round-btn minus" onclick="decreaseValue()">−</button>
+        <input type="number" id="quantity" value="1" min="1" readonly>
+        <button class="round-btn plus" onclick="increaseValue()">+</button>
+        <button class="izdaj" onclick="issueItem()">Izdaj</button>
+    </div>
 
     </div>
 </div>

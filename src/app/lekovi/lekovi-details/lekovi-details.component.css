@@ -23,7 +23,7 @@ flex: 3;
  background-color: #b1daf3;
  padding: 20px;
  border-radius: 20px;
-
+border-bottom: 3px solid blue;
  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
  
 }
@@ -33,8 +33,85 @@ flex: 3;
     font-size: 20px;
     margin-right:5px;
 }
+.recept{
+    background-color: #F8D7DA;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px;
+}
+.cena{
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight:600;
+}
 .check{
     color: green;
     font-size: 18px;
     margin-right: 10px;
+}
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.round-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.round-btn:hover {
+    background-color: #45a049;
+}
+
+.round-btn:active {
+    background-color: #3e8e41;
+}
+
+#quantity {
+    width: 60px;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#quantity:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.izdaj {
+    padding: 10px 15px;
+    background-color: #3EB489 ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.izdaj:hover {
+    background-color: #0056b3;
+}
+
+.izdaj:active {
+    background-color: #003f7f;
 }
