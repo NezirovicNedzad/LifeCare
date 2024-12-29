@@ -52,6 +52,27 @@ margin: 10px;
     animation: pulsate 1.5s infinite;   
     align-items: center;
 }
+.addMed{
+  width: 55px;
+  height: 55px;
+  background-color: #3EB489;
+  color: white;
+  border: none;
+  text-align: center;
+  
+  font-size: 30px;
+ margin-left:30px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+}
+.addMed:hover{
+
+  background-color: black;
+  transform: scale(1.1); 
+
+}
+
 .naruci{
     background-color:#3EB489 ;
     margin-top: 5px;
@@ -60,9 +81,11 @@ margin: 10px;
     border:none;
     border-radius: 8px;
     color:white;
+    transition: all 0.3s ease;
 }
 .naruci:hover{
   background-color: black;
+
 }
 @keyframes pulsate {
     0% {
@@ -78,3 +101,40 @@ margin: 10px;
       opacity: 1;
     }
   }
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #3498db;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0D98BA;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: black;
+  }
+  

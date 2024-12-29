@@ -26,7 +26,7 @@ accountService=inject(AccountService);
     this.accountService.login(this.loginData).subscribe({
  
      next:_=>{
-      this.router.navigateByUrl('/members');
+      this.router.navigateByUrl('/lekovi');
        
      },
      error:error=>this.toastr.error(error.error)

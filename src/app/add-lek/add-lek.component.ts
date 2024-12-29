@@ -5,6 +5,7 @@ import {FileUploader, FileUploadModule} from 'ng2-file-upload';
 import { AccountService } from '../_services/account.service';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-lek',
   standalone: true,
@@ -15,10 +16,11 @@ import { HttpClient } from '@angular/common/http';
 export class AddLekComponent implements OnInit {
   lekForm: FormGroup;
 private accountService=inject(AccountService)
+private toastr=inject(ToastrService)
 private http=inject(HttpClient);
   uploader: FileUploader;
-  photoPreview: string | null = null; 
   hasBaseDropZoneOver: boolean = false;
+  imagePreviewUrl: string | ArrayBuffer | null = null;
 baseUrl=environment.apiUrl;
   constructor(private fb: FormBuilder) {
     this.lekForm = this.fb.group({
@@ -31,45 +33,38 @@ baseUrl=environment.apiUrl;
       kolicina: ['', [Validators.required, Validators.min(1)]],
       photoUrl: ['nebitno'],
       photo: [null], 
-      idFarmaceuta:28
+      idFarmaceuta:this.accountService.currentUser()?.id
     });
     this.uploader = new FileUploader({
       url: '', // Will dynamically set the URL in the upload process
       allowedFileType: ['image'],
       autoUpload: false,
     });
-    
-    this.uploader.onAfterAddingFile = (file) => {
-      file.withCredentials = false;
-      this.generatePhotoPreview(file._file);
-      console.log(file._file) // Generate preview
-    };
-  
   }
-  
   ngOnInit(): void {
-     this.uploader = new FileUploader({
-      url: '', // Will dynamically set the URL in the upload process
-      allowedFileType: ['image'],
-      autoUpload: false,
-    });
+    this.uploader.onAfterAddingFile = (fileItem) => {
+      this.generateImagePreview(fileItem._file);
+    };
   }
-
-
-
-  generatePhotoPreview(file: File) {
+  generateImagePreview(file: File): void {
     const reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.photoPreview = event.target.result;
+    reader.onload = () => {
+      this.imagePreviewUrl = reader.result;
     };
     reader.readAsDataURL(file);
   }
 
-
+  clearImagePreview(): void {
+    this.imagePreviewUrl = null;
+    this.lekForm.reset();
+    this.uploader.clearQueue();
+  }
+  
   fileOverBase(e:any)
   {
     this.hasBaseDropZoneOver=e;
   }
+  
   onSubmit(): void {
     if (this.lekForm.invalid || this.uploader.queue.length<=0) {
       alert('Please fill in all required fields.');
@@ -91,12 +86,13 @@ baseUrl=environment.apiUrl;
     // API Call
     this.http.post(this.baseUrl+'lek', formData).subscribe({
       next: (response) => {
-        alert('Lek successfully added!');
+        this.toastr.success("Uspesno ste dodali lek!");
         console.log(response);
+        this.clearImagePreview();
       },
       error: (err) => {
         console.error('Error adding lek:', err);
-        alert('Failed to add lek. Please try again.');
+        this.toastr.error("Niste dodali lek!");
       },
     });
   }

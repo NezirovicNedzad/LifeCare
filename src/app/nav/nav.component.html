@@ -3,15 +3,31 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       
       <!-- Logo -->
-      <a routerLink="/" class="d-flex align-items-end mb-2 mb-lg-0   text-decoration-none">
-        <img src="img/LifeCare.png" 
-             alt="Logo" width="50" height="50" >
-      </a>
+       @if(accountService.currentUser())
+       {
+        <a routerLink="/lekovi" class="d-flex align-items-end mb-2 mb-lg-0   text-decoration-none">
+          <img src="img/LifeCare.png" 
+               alt="Logo" width="50" height="50" >
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a routerLink="/lekovi" class="nav-link px-2 logo">LifeCARE +</a></li>
+        </ul>
+       }
+       @else
+       {
+        <a routerLink="/" class="d-flex align-items-end mb-2 mb-lg-0   text-decoration-none">
+          <img src="img/LifeCare.png" 
+               alt="Logo" width="50" height="50" >
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a routerLink="/" class="nav-link px-2 logo">LifeCARE +</a></li>
+        </ul>
+
+       }
+      
 
       <!-- Navigation Links -->
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a routerLink="/" class="nav-link px-2 logo">LifeCARE +</a></li>
-      </ul>
+    
       
       <!-- Navigation Menu -->
       <div style="display: flex; justify-content: end;">
@@ -19,9 +35,9 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
        
            @if(accountService.currentUser()){
-          <li><a routerLinkActive="active" routerLink="/lekovi" class="nav-link px-2 text-gray">HOME</a></li>
-          <li><a routerLinkActive="active" routerLink="/list" class="nav-link px-2 text-gray">TRANSACTIONS</a></li>
-          <li><a routerLinkActive="active" routerLink="/messages" class="nav-link px-2 text-gray">SOME</a></li>
+          <li><a routerLinkActive="active" routerLink="/lekovi" class="nav-link px-2 text-gray">LEKOVI</a></li>
+          <li><a routerLinkActive="active" routerLink="/list" class="nav-link px-2 text-gray">KLIJENTI</a></li>
+          <li><a routerLinkActive="active" routerLink="/messages" class="nav-link px-2 text-gray">TRANSAKCIJE</a></li>
           }
           <!-- <li><a routerLinkActive="active" routerLink="/errors" class="nav-link px-2 text-gray">Errors</a></li> -->
         </ul>
@@ -32,9 +48,9 @@
 
     @if(accountService.currentUser()){
       <div dropdown class="dropdown">
-        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray ">PROFILE</a>
+        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray ">PROFIL</a>
         <div *dropdownMenu class="dropdown-menu">
-          <a class="dropdown-item itemDropdown"><i class="bi bi-person-fill icon"></i>Edit profile</a>
+          <a class="dropdown-item itemDropdown"><i class="bi bi-person-fill icon"></i>Uredi profil</a>
           <div class="divider"></div>
           <a class="dropdown-item itemDropdown" (click)="logout()" ><i class="bi bi-box-arrow-right icons"></i>
             Logout</a>
