@@ -5,12 +5,13 @@ import { NavComponent } from "./nav/nav.component";
 import { AccountService } from './_services/account.service';
 import { HomeComponent } from "./home/home.component";
 import { RouterOutlet } from '@angular/router';
+import { NgxSpinnerComponent } from 'ngx-spinner';
   // Add this import
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavComponent,RouterOutlet],  // Add FormsModule here
+  imports: [NavComponent,RouterOutlet,NgxSpinnerComponent],  // Add FormsModule here
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

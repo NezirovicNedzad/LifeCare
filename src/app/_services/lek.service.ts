@@ -22,6 +22,10 @@ private accountService=inject(AccountService);
   {
     return this.http.get<Lek>(this.baseUrl+'lek/'+id,this.getHttpOptions())
   }
+  getLekByName(naziv:string)
+  {
+    return this.http.get<Lek[]>(this.baseUrl+'lek/search?naziv='+naziv,this.getHttpOptions())
+  }
   
   getHttpOptions(){
     return{

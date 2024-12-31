@@ -20,12 +20,18 @@ export class LekListComponent implements OnInit {
   searchQuery: string = '';
 
   ngOnInit(): void {
-    this.loadLekovi();
+    this.loadLekovi("");
   }
   
-  loadLekovi(){
-    this.lekService.getLekovi().subscribe({
-      next:lekovi=>this.lekovi=lekovi
+  loadLekovi(naziv:string){
+    this.lekService.getLekByName(naziv).subscribe({
+      next: (lekovi) => {
+        this.lekovi = lekovi;
+        console.log('Fetched lekovi:', lekovi);
+      },
+      error: (err) => console.error('Error loading lekovi:', err),
+    
+    
     })
   }
   detalji(id:number)
@@ -38,10 +44,21 @@ export class LekListComponent implements OnInit {
   }
   onSearchChange() {
     console.log('Search query changed:', this.searchQuery);
+   this.lekService.getLekByName(this.searchQuery);
+   this.lekService.getLekByName(this.searchQuery).subscribe({
+    next:(lekovi)=>{
+   this.lekovi=lekovi
+    }
+   });
   }
 
   onSearch() {
     console.log('Search button clicked with query:', this.searchQuery);
+   this.lekService.getLekByName(this.searchQuery).subscribe({
+    next:(lekovi)=>{
+   this.lekovi=lekovi
+    }
+   });
     // Add your search logic here
   }
   
