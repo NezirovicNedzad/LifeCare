@@ -1,0 +1,82 @@
+.searchable-dropdown {
+    position: relative;
+    width: 300px; /* Adjust width as needed */
+  }
+  
+  .searchable-dropdown input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0 0; /* Rounded top corners */
+    font-size: 16px;
+  }
+  
+  .searchable-dropdown select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 0 0 4px 4px; /* Rounded bottom corners */
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  .searchable-dropdown select option {
+    padding: 10px;
+    color: #333;
+    background-color: #fff;
+  }
+
+  .icon{
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .container-fluid{
+    display: flex;
+justify-content: center;    
+    
+  }
+  .right{
+    flex:5;
+
+  }
+  .left{
+background-color: #ccc;
+padding: 10px;
+border: 3px dotted #0D98BA ;
+}
+.iconUser{
+    text-align: center;
+}
+.search{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    background-color:#3EB489 ;
+    margin-top: 15px;
+    width: 100%;
+    color: white;
+}
+.btn:hover{
+    background-color: black;
+}
+
+
+.info-div {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333333; /* Dark gray text color for good contrast */
+    padding: 15px;
+    justify-content: left;
+    justify-self: left;
+    width: 300px;
+    font-size: 17px;
+    border-radius: 5px; /* Optional: Rounded corners */
+    margin-left: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Slight shadow for better visibility */
+  }

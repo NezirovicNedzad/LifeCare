@@ -37,7 +37,7 @@
            @if(accountService.currentUser()){
           <li><a routerLinkActive="active" routerLink="/lekovi" class="nav-link px-2 text-gray">LEKOVI</a></li>
           <li><a routerLinkActive="active" routerLink="/list" class="nav-link px-2 text-gray">KLIJENTI</a></li>
-          <li><a routerLinkActive="active" routerLink="/messages" class="nav-link px-2 text-gray">TRANSAKCIJE</a></li>
+          <li><a routerLinkActive="active" routerLink="/transakcije" class="nav-link px-2 text-gray">TRANSAKCIJE</a></li>
           }
           <!-- <li><a routerLinkActive="active" routerLink="/errors" class="nav-link px-2 text-gray">Errors</a></li> -->
         </ul>
@@ -48,13 +48,32 @@
 
     @if(accountService.currentUser()){
       <div dropdown class="dropdown">
-        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray ">PROFIL</a>
+        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray px-2">PROFIL</a>
         <div *dropdownMenu class="dropdown-menu">
           <a class="dropdown-item itemDropdown"><i class="bi bi-person-fill icon"></i>Uredi profil</a>
           <div class="divider"></div>
           <a class="dropdown-item itemDropdown" (click)="logout()" ><i class="bi bi-box-arrow-right icons"></i>
             Logout</a>
         </div>
+        
+      </div>
+    }
+    
+    @if(accountService.currentUser() ){
+      <div dropdown class="dropdown">
+        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray px-2 ">NARUDZBINA<i  class="bi bi-cart-fill icon"></i></a>
+        @if(recievedData.lekovi)
+        {
+         
+          <div *dropdownMenu class="dropdown-menu">
+            <p>Za:{{recievedData.ime}}</p>
+            @for (lek of recievedData.lekovi; track $index) {
+              <p>{{lek.naziv}}</p>
+            }
+          </div>
+        }
+      
+        
         
       </div>
     }

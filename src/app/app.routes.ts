@@ -3,7 +3,6 @@ import { HomeComponent } from './home/home.component';
 import { LekListComponent } from './lekovi/lekovi-list/lekovi-list.component';
 
 import { ListsComponent } from './lists/lists.component';
-import { MessagesComponent } from './messages/messages.component';
 import { authGuard } from './_guards/auth.guard';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
@@ -12,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddLekComponent } from './add-lek/add-lek.component';
 import { LekoviDetailsComponent } from './lekovi/lekovi-details/lekovi-details.component';
+import { TransactionAllComponent } from './transaction-all/transaction-all.component';
+import { TransakcijeComponent } from './transakcije/transakcije.component';
 
 export const routes: Routes = [
 
@@ -27,9 +28,9 @@ export const routes: Routes = [
         {path:'lekovi',component:LekListComponent},
         {path:'lekovi/:id',component:LekoviDetailsComponent},
         {path:'list',component:ListsComponent},
-        {path:'messages',component:MessagesComponent},
-        {path:'addMed',component:AddLekComponent}
-
+        {path:'transakcije',component:TransakcijeComponent},
+        {path:'addMed',component:AddLekComponent},
+          {path:'transakcije/detalji',component:TransactionAllComponent}
     ]
 
   },

@@ -1,0 +1,100 @@
+<div class="cont">
+  <div class="left">
+   
+      <div class="iconUser">
+        <h3>Klijent</h3>
+        <i class="bi bi-person-fill icon"></i>
+           
+
+
+           <div class="klijent">
+            <p>Ime:{{receivedData.ime}}</p>
+            <p>Email:{{receivedData.email}}</p>
+            <p>Adresa:{{receivedData.adresa}}</p>
+            <p>Rodjen:{{receivedData.datum}}</p>
+           </div>
+   
+    </div>
+
+    <div class="recepti">
+      <h6>Recepti koji su prepisani za datog klijenta:</h6>
+<div class="receptCont">
+
+  @for (recept of recepti; track $index) {
+<div class="receptItem">
+  <p>Za lek:{{recept.lekNaziv}}</p>
+  <p>Izdao:{{recept.farmaceut}}</p>
+  <div class="center">
+    <button class="detalji">Pogledaj</button>
+  </div>
+  
+</div>
+
+  }
+</div>
+    </div>
+    
+    
+  </div>
+  <div class="main">
+
+    @for (lek of lekovi; track $index) {
+
+     
+        @if(isLekInRecepti(lek.id))
+        {
+          <div class="item" style="background-color: #aedcae;" >
+            <div class="begin"><p class="naslov">{{lek.naziv}}</p>
+  
+             @if(lek.naRecept)
+             {
+                <div class="recept">Na recept!</div>
+             }
+  
+            </div>
+           
+            <img src="{{lek.photoUrl}}" width="200" height="200">
+            <p class="opis">{{lek.opis.slice(0,20)}} ...</p>
+            <p class="cena">Cena: {{lek.cena}}.00din</p>
+            @if (lek.naRecept) {
+              <div class="quantity-container">
+                <button class="button-circle" (click)="decreaseQuantity(lek.id)">-</button>
+                <div class="value-circle">{{ quantities[lek.id] || 1 }}</div>
+                <button class="button-circle" (click)="increaseQuantity(lek.id)">+</button>
+                <button (click)="placeOrder(lek.id)">Naruci</button>
+              </div>
+            }
+        </div>
+       
+
+        } 
+        @else
+        {
+          <div class="item"  >
+          <div class="begin"><p class="naslov">{{lek.naziv}}</p>
+
+           @if(lek.naRecept)
+           {
+              <div class="recept">Na recept!</div>
+           }
+
+          </div>
+         
+          <img src="{{lek.photoUrl}}" width="200" height="200">
+          <p class="opis">{{lek.opis.slice(0,20)}} ...</p>
+          <p class="cena">Cena: {{lek.cena}}.00din</p>
+        
+          @if (!lek.naRecept) {
+            <div class="quantity-container">
+              <button class="button-circle" (click)="decreaseQuantity(lek.id)">-</button>
+              <div class="value-circle">{{ quantities[lek.id] || 1 }}</div>
+              <button class="button-circle" (click)="increaseQuantity(lek.id)">+</button>
+              <button (click)="placeOrder(lek.id)">Naruci</button>
+            </div>
+          }
+      </div>
+        }     
+      
+  }
+  </div>
+</div>

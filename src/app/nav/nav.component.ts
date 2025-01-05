@@ -5,6 +5,7 @@ import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { SenderService } from '../_services/sender.service';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 export class NavComponent {
   accountService=inject(AccountService);
   loggedIn=false;
+  recievedData:any
+  dataService=inject(SenderService)
   private router=inject(Router);
   private toastr=inject(ToastrService);
   loginData = {
@@ -24,6 +27,12 @@ export class NavComponent {
     password: ''
   };
 
+  constructor()
+  {
+    this.dataService.currentData.subscribe(data => {
+      this.recievedData = data;
+    });
+  }
 
 
   onLoginSubmit() {

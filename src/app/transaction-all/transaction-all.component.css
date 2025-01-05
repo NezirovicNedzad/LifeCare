@@ -1,0 +1,144 @@
+.cont{
+    display: flex;
+}
+.left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+   
+}
+.main{
+    flex: 6;
+   
+    display: flex;
+    
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.iconUser{
+    text-align: center;
+    padding: 20px;
+    background-color: #e3dede;
+    height: min-content;
+    border-radius: 20px;
+    
+}
+.recepti{
+    background-color: #b1daf3;
+    padding: 20px;
+    border-radius: 20px;
+   border-bottom: 3px solid blue;
+   margin-top: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
+}
+.icon{
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .item{
+   
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; ;
+    margin: 10px;
+    border-radius: 5px;
+    width: 250px;
+    padding: 10px 15px;
+    
+}
+
+
+.item:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.cena{
+   font-size: 16px;
+margin: 10px;
+margin-bottom: 15px;
+   font-weight: bold;
+}
+.opis{
+    color: #808080; /* Light grey color */
+      font-size: 12px;
+      margin: 10px;
+}
+.begin
+{
+    display: flex;
+ padding: 5px;  
+   
+}
+.naslov{
+    flex: 4;
+    font-size: larger;
+    text-transform: capitalize;
+    
+}
+
+
+.recept{
+    background-color: #cc3300;
+    border-radius: 10px;
+    padding: 4px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    animation: pulsate 1.5s infinite;   
+    align-items: center;
+}
+.receptCont{
+    display: flex;
+    flex-direction: column;
+    border:1px dotted red;
+    padding: 5px;
+    align-items: center;
+    border-radius: 15px;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+.detalji{
+    padding: 5px;
+    background-color:#3EB489 ;
+    border: none;
+    border-radius: 10px;
+}
+.quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .button-circle{
+    border-radius: 50%;
+    font-size: larger;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .value-circle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+  }

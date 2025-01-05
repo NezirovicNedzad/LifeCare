@@ -1,0 +1,58 @@
+
+<div class="novi">
+    <div class="info-div">
+        Dodavanje transakcija pocinje sa izabirom klijenta.Ako klijent ne postoji dodajte <a href="">ovde!</a>
+    </div>
+</div>
+<div class="container-fluid">
+   
+      
+        <div class="left">
+
+            <div class="iconUser">
+
+            <i class="bi bi-person-fill icon"></i>
+               <p>Izaberi klijenta</p>
+        </div>
+        <div class="search">
+      
+            
+
+            <div class="searchable-dropdown">
+                <input
+                type="text"
+                [(ngModel)]="searchQuery"
+                (input)="filterOptions()"
+                placeholder="Search options..."
+                class="search-input"
+              />
+              
+              <select
+              id="clientSelect"
+              (change)="onSelectClient($event)"
+            >
+              <option [value]="null" disabled selected>Select a client</option>
+              <option *ngFor="let klijent of filteredKlijenti" [value]="klijent.id">
+                {{ klijent.ime }} {{ klijent.prezime }}
+              </option>
+            </select>
+
+                <button (click)="onIzaberi()" class="mt-3 btn" >Izaberi</button>
+ 
+            </div>
+          
+        </div>
+        </div>
+        
+        
+  
+
+</div>
+
+
+
+
+    
+
+
+
