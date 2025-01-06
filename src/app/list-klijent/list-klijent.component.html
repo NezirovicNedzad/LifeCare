@@ -1,0 +1,43 @@
+
+<div class="all">
+
+
+    <div class="search-container">
+        <input 
+          type="text" 
+          placeholder="Pretrazi..." 
+          [(ngModel)]="searchQuery" 
+          (input)="onSearchChange()" 
+          class="search-input"
+        />
+        <button class="search-button" (click)="onSearch()">
+          🔍
+        </button>
+      </div>
+    <button (click)="dodaj()" class="addMed">+</button>
+    
+    <div class="row">
+    
+        <div class="cont">
+            @for (klijent of klijenti; track klijent.id) {
+                <div style="width:720px;padding:10px;border: 1px dotted;display: flex;margin: 5px;">
+                    <i class="bi bi-person-fill icon"></i>
+                    <div class="text">
+                      <p>Ime:<strong>{{klijent.ime+' '+ klijent.prezime}}</strong></p>
+                      <p>Email:<strong>{{klijent.email}}</strong></p>
+                      <p>Adresa:<strong>{{klijent.adresa}}</strong></p>
+                      <p>Datum Rodjenja:<strong>{{formatDate(klijent.datumRodjenja.toString())}}</strong></p>
+                      <p >Telefon:<strong>{{klijent.telefon}}</strong></p>
+                    </div>
+                    <div class="proizvodCart">
+                        <button class="recepti">Recepti</button>
+                        <button class="transakcije">Transakcije</button>
+                    
+                    </div>
+                    
+                  </div>
+               
+            }
+        </div>
+    </div>
+</div>

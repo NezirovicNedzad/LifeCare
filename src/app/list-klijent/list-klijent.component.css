@@ -1,0 +1,156 @@
+.item{
+   
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; ;
+    margin: 10px;
+    border-radius: 5px;
+    width: 250px;
+    padding: 10px 15px;
+    
+}
+.cont{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+   
+}
+.icon{
+    width: 150px;
+    height: 200px;
+    font-size: 150px;
+}
+.item:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.cena{
+   font-size: 16px;
+margin: 10px;
+   font-weight: bold;
+}
+.opis{
+    color: #808080; /* Light grey color */
+      font-size: 12px;
+      margin: 10px;
+}
+.begin
+{
+    display: flex;
+ padding: 5px;  
+   
+}
+.naslov{
+    flex: 4;
+    font-size: larger;
+    text-transform: capitalize;
+    
+}
+
+
+.recept{
+    background-color: #cc3300;
+    border-radius: 10px;
+    padding: 4px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    animation: pulsate 1.5s infinite;   
+    align-items: center;
+}
+.addMed{
+  width: 55px;
+  height: 55px;
+  background-color: #3EB489;
+  color: white;
+  border: none;
+  text-align: center;
+  
+  font-size: 30px;
+ margin-left:30px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+}
+.addMed:hover{
+
+  background-color: black;
+  transform: scale(1.1); 
+
+}
+
+.naruci{
+    background-color:#3EB489 ;
+    margin-top: 5px;
+    padding: 10px 15px;
+    width: 100%;
+    border:none;
+    border-radius: 8px;
+    color:white;
+    transition: all 0.3s ease;
+}
+.naruci:hover{
+  background-color: black;
+
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    flex: 5;
+
+}
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #3498db;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0D98BA;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: black;
+  }
+  .recepti{
+    background-color: #3EB489;
+    padding: 5px;
+    color:white;
+    border:none;
+    margin: 5px;
+    
+  }
+  .transakcije
+  {
+    background-color: #3498db;
+    padding: 5px;
+    color:white;
+
+    margin: 5px;
+    border: none;
+  }

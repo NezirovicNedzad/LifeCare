@@ -1,0 +1,51 @@
+<div class="cont">
+    <div class="iconUsercont">
+
+
+        <div class="iconUser">
+            <h3>Klijent</h3>
+            <i class="bi bi-person-fill icon"></i>
+               
+    
+    
+               <div class="klijent">
+                <p>Ime:{{order?.ime}}</p>
+                <p>Email:{{order?.email}}</p>
+                <p>Adresa:{{order?.adresa}}</p>
+                <p>Rodjen:{{order?.datum}}</p>
+               </div>
+        </div>
+    </div>
+    
+    
+    <div class="main">
+        
+   <h2 style="text-align: center;margin-bottom: 10px;">Narudzbina</h2>
+
+        @for (prodaja of order?.prodajaDetalji; track $index) {
+            <div style="width:720px;padding:10px;border: 1px dotted;display: flex;margin: 5px;">
+                <img src="{{prodaja.photoUrl}}" width="200" height="150"/>
+                <div class="text">
+                  <p>{{prodaja.naziv}}</p>
+                  <p>{{prodaja.opis.slice(0,50)}}...</p>
+                  <p style="margin-top: 10px;font-size:18px">Cena:<strong>{{prodaja.cena*prodaja.kolicinaProizvoda}}din</strong></p>
+                </div>
+                <div class="proizvodCart">
+                 @if (prodaja.naRecept) {
+                    <button class="recept">Na recept!</button>
+                      
+                    
+                 }
+                  <p style="margin-top: 10px;">Kolicina:{{prodaja.kolicinaProizvoda}}</p>
+                </div>
+                
+              </div>
+        }
+
+
+        <div class="d-flex justify-content-center"></div><button (click)="showAlert()" class="izdaj">Izdaj</button>
+    </div>
+
+
+
+</div>

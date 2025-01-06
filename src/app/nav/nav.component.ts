@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 
 import {FormsModule} from '@angular/forms';
 import { AccountService } from '../_services/account.service';
@@ -15,10 +15,11 @@ import { SenderService } from '../_services/sender.service';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   accountService=inject(AccountService);
   loggedIn=false;
   recievedData:any
+  cena:number =0;
   dataService=inject(SenderService)
   private router=inject(Router);
   private toastr=inject(ToastrService);
@@ -27,11 +28,17 @@ export class NavComponent {
     password: ''
   };
 
-  constructor()
-  {
+ 
+  ngOnInit(): void {
     this.dataService.currentData.subscribe(data => {
       this.recievedData = data;
+      if (this.accountService.currentUser() && this.dataService.getCurrentData()) {
+        this.CalculateCena(); // Initial calculation for new lek cena
+      }
     });
+  
+    
+ 
   }
 
 
@@ -54,4 +61,17 @@ export class NavComponent {
     this.loginData.password=''
     
   }
+
+  CalculateCena()
+  {
+    this.cena=0
+    this.recievedData.prodajaDetalji.map((p: any)=>{
+      this.cena+=p.cena*p.kolicinaProizvoda;
+    })
+    
+  }
+  checkout()
+  {
+    this.router.navigateByUrl("transakcije/checkout");
+    }
 }

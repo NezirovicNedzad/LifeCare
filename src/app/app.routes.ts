@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LekListComponent } from './lekovi/lekovi-list/lekovi-list.component';
-
-import { ListsComponent } from './lists/lists.component';
 import { authGuard } from './_guards/auth.guard';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
@@ -13,6 +11,8 @@ import { AddLekComponent } from './add-lek/add-lek.component';
 import { LekoviDetailsComponent } from './lekovi/lekovi-details/lekovi-details.component';
 import { TransactionAllComponent } from './transaction-all/transaction-all.component';
 import { TransakcijeComponent } from './transakcije/transakcije.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ListKlijentComponent } from './list-klijent/list-klijent.component';
 
 export const routes: Routes = [
 
@@ -27,10 +27,11 @@ export const routes: Routes = [
     children:[
         {path:'lekovi',component:LekListComponent},
         {path:'lekovi/:id',component:LekoviDetailsComponent},
-        {path:'list',component:ListsComponent},
+        {path:'list-klijenti',component:ListKlijentComponent},
         {path:'transakcije',component:TransakcijeComponent},
         {path:'addMed',component:AddLekComponent},
-          {path:'transakcije/detalji',component:TransactionAllComponent}
+          {path:'transakcije/detalji',component:TransactionAllComponent},
+          {path:'transakcije/checkout',component:CheckoutComponent}
     ]
 
   },

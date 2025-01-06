@@ -4,6 +4,8 @@ import { LekService } from '../../_services/lek.service';
 import { Lek } from '../../_models/lek';
 import { NgIf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
+import { Klijent } from '../../_models/klijent';
+import { KlijentService } from '../../_services/klijent.service';
 
 @Component({
   selector: 'app-member-list',
@@ -16,7 +18,9 @@ export class LekListComponent implements OnInit {
   
   private router=inject(Router)
   private lekService=inject(LekService);
+  private klijentService=inject(KlijentService);
   lekovi:Lek[]=[];
+  klijenti:Klijent[]=[];
   searchQuery: string = '';
 
   ngOnInit(): void {
@@ -34,6 +38,7 @@ export class LekListComponent implements OnInit {
     
     })
   }
+ 
   detalji(id:number)
   {
     this.router.navigateByUrl(`/lekovi/${id}`)

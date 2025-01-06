@@ -26,19 +26,18 @@
 .itemDropdown{
     padding: 10px;
    
-    color: #004c5c !important;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-   
+    color: black !important;
+     
 }
 .itemDropdown:active{
     background-color: #3EB489;
 }
 .dropdown-menu{
  
-    padding: 0!important;
-    background-color:#EAF8FC;
-    color: #004c5c !important;
-    
+    padding: 5px!important;
+    width: max-content!important;
+    background-color:#F5F5F5;;
+    color: black
 }
 
 .icon{
@@ -46,3 +45,40 @@
     padding: 5px;
 }
 /* Dropdown Menu Animation */
+.order{
+    padding: 5px;
+    
+}
+.order-items {
+    display: flex;
+    flex-direction: column; /* Keep items stacked vertically in the dropdown */
+    gap: 10px; /* Space between order items */
+    padding: 10px;
+  }
+  
+.cartTitle{
+    font-size: 20px;
+    margin: 5px;
+    text-align: center;
+    color: lightslategray;
+}
+.proizvodCart{
+    display: flex;
+    justify-content: center;
+    width: max-content;
+
+    margin-top: 13px;
+}
+
+.cartCena{
+    text-align: center;
+    font-size: 20px;
+    color: lightslategray;
+    font-family: 'Roboto', sans-serif;
+}
+.checkout{
+    width: 100%;
+    padding: 5px;
+    background-color: #3EB489;
+    color: white;
+}

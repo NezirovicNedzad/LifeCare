@@ -6,6 +6,7 @@ import { TransactionAllComponent } from "../transaction-all/transaction-all.comp
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SenderService } from '../_services/sender.service';
+import { Order } from '../_models/order';
 
 @Component({
   selector: 'app-transakcije',
@@ -56,13 +57,16 @@ selectedKlijent:Klijent | undefined;
     this.selectedKlijent=this.filteredKlijenti[0];
   }
   sendData(klijent:any) {
-    const data = {
+    
+    const data:Order = {
+      cenaTotal:0,
       ime: `${klijent.ime} ${klijent.prezime}`,
       klijentId: klijent.id,
       telefon: klijent.telefon,
-      adresa:klijent.adresa,
-      email:klijent.email,
-      datum:this.formatDate(klijent.datumRodjenja.toString())
+      adresa: klijent.adresa,
+      email: klijent.email,
+      datum: this.formatDate(klijent.datumRodjenja.toString()),
+      prodajaDetalji: []
     };
     
     this.dataService.changeData(data);

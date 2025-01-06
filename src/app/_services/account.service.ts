@@ -42,6 +42,7 @@ export class AccountService {
   {
 
     localStorage.removeItem('user');
+    localStorage.removeItem('data');
     this.currentUser.set(null);
   }
 }

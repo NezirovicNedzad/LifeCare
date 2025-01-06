@@ -7,6 +7,9 @@ import { Lek } from '../_models/lek';
 import { ReceptService } from '../_services/recept.service';
 import { ReceptsForKlijent } from '../_models/receptsKlijent';
 import { ToastrService } from 'ngx-toastr';
+import { Prodaja } from '../_models/prodaja';
+import { Order } from '../_models/order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction-all',
@@ -18,10 +21,11 @@ import { ToastrService } from 'ngx-toastr';
 export class TransactionAllComponent implements OnInit {
   quantity: number = 1;
   quantities: any = {};
-
+cena:number=0;
   // Method to track items by id for *ngFor
-  selectedLekovi: Lek[] = []; 
+  selectedLek: Lek | undefined; 
   private dataService=inject(SenderService);
+  private router=inject(Router)
   private lekService=inject(LekService);
   private receptService=inject(ReceptService);
   private toastr=inject(ToastrService);
@@ -33,6 +37,12 @@ export class TransactionAllComponent implements OnInit {
     this.dataService.currentData.subscribe(data => {
       this.receivedData = data;
     });
+console.log("Data:",this.receivedData);
+    if(!this.receivedData)
+    {
+      console.log(!this.receivedData);
+      this.router.navigateByUrl('/transakcije')
+    }
 this.loadLekovi();
 
 this.loadRecepti(this.receivedData.klijentId);
@@ -54,17 +64,12 @@ this.loadRecepti(this.receivedData.klijentId);
 
 this.receptService.loadKlijentRecepts(id).subscribe({
   next:(recepti)=>{
+  
     this.recepti=recepti;
     console.log(recepti);
-  },
-  error: (err) => console.error('Error loading lekovi:', err),
-
-})
   }
 
-
-  trackById(index: number, lek: any): number {
-    return lek.id;
+})
   }
 
 
@@ -82,17 +87,24 @@ this.receptService.loadKlijentRecepts(id).subscribe({
       this.quantities[lekId]--;
     }
   }
-  sendData(newLekovi:Lek[]) {
+  sendData(newLek:Lek,kolicinaProizvoda:number,receptId?:number) {
     // Get current data (including lekovi) from the service
   const currentData = this.dataService.getCurrentData();
+  const newProdaja: Prodaja = {
+    ...newLek,
+    idLeka:newLek.id,
+    kolicinaProizvoda,
+    idRecepta:receptId,
+  };
 
+  
   // Merge current lekovi with the new lekovi array
-  const updatedLekovi = currentData?.lekovi ? [...currentData.lekovi, ...newLekovi] : newLekovi;
+  const updatedLekovi:Prodaja[]  = currentData?.prodajaDetalji ? [...currentData.prodajaDetalji, newProdaja] : [newProdaja];
 
   // Merge the new lekovi array into the current data
-  const updatedData = {
+  const updatedData : Order = {
     ...currentData,
-    lekovi: updatedLekovi
+    prodajaDetalji: updatedLekovi
   };
 
   // Send the updated data to the service
@@ -103,24 +115,40 @@ this.receptService.loadKlijentRecepts(id).subscribe({
     // Logic for placing the order
     const lek = this.lekovi?.find(l => l.id === id);
     
+    
     if (lek) {
       // Add the lek to the selectedLekovi array
-     if(this.quantities[id]==undefined)
-     {
-      this.selectedLekovi.push(lek);
-     }
-     else{
-      for (let i = 0; i < this.quantities[id]; i++) {
-        this.selectedLekovi.push(lek);
-      }
-      console.log(this.selectedLekovi);
-      console.log('Lek added to the cart:', lek);
-      console.log('Selected lekovi:', this.selectedLekovi); // Log the updated array
+      if(this.quantities[id]==undefined)
+        {
+         this.quantities[id]=1;
+        }
+      this.selectedLek=lek;
+      if(lek.naRecept)
+      {
 
-      this.sendData(this.selectedLekovi);
-      // Show success messagese
-      this.toastr.success(`Uspesno ste dodali u korpu ${lek.naziv}`);
-    }
+       const receptId:number=this.findReceptId(id);
+       
+       this.sendData(this.selectedLek,this.quantities[id],receptId);
+       // Show success messagese
+       this.toastr.success(`Uspesno ste dodali u korpu ${lek.naziv}`);
+
+ 
+      }
+      else
+      {
+       
+        console.log('Lek added to the cart:', lek);
+        console.log('Selected lekovi:', this.selectedLek); // Log the updated array
+     
+        this.sendData(this.selectedLek,this.quantities[id]);
+        // Show success messagese
+        this.toastr.success(`Uspesno ste dodali u korpu ${lek.naziv}`);
+    
+      }
+     
+     
+   
+    
     } else {
       console.log('Lek not found:', id);
       this.toastr.error('Error: Lek not found.');
@@ -128,5 +156,28 @@ this.receptService.loadKlijentRecepts(id).subscribe({
   }
   isLekInRecepti(lekId: number): boolean | undefined {
     return this.recepti?.some(recept => recept.idLeka === lekId);
+  }
+  findReceptId(lekId:number)
+  {
+
+    var recept:number=0;
+    this.recepti?.map(r=>{
+
+      if(r.idLeka==lekId)
+      {
+        recept=r.id;
+      }
+    })
+    return recept;
+
+  }
+  CalculateCena()
+  {
+    this.receivedData.prodajaDetalji.map((p: any)=>{
+      this.cena+=p.cena*p.kolicinaProizvoda;
+    })
+
+    this.receivedData.cenatTotal=this.cena;
+    
   }
 }
