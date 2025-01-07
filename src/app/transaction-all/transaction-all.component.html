@@ -17,21 +17,11 @@
     </div>
 
     <div class="recepti">
-      <h6>Recepti koji su prepisani za datog klijenta:</h6>
-<div class="receptCont">
+     <h6>Recepti</h6>
+     <p>Lekovi na recept za koji dati korrisnik poseduje recept su obojeni zelenom bojom i moguce je ih izdati.</p>
+     <p>Ako želite da pogledate izdate recepte pogledajte ispod.</p>
+    <div class="center"><button class="receptiP"><i class="bi bi-list-check iconR"></i>Recepti</button></div> 
 
-  @for (recept of recepti; track $index) {
-<div class="receptItem">
-  <p>Za lek:{{recept.lekNaziv}}</p>
-  <p>Izdao:{{recept.farmaceut}}</p>
-  <div class="center">
-    <button class="detalji">Pogledaj</button>
-  </div>
-  
-</div>
-
-  }
-</div>
     </div>
     
     

@@ -142,3 +142,23 @@ margin-bottom: 15px;
     font-size: 18px;
     font-weight: bold;
   }
+.receptiP{
+
+    padding: 7px;
+    background-color: #3EB489;
+    color: white;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.receptiP:hover{
+
+background-color: black;
+
+}
+.iconR{
+    margin-right: 4px;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
