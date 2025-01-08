@@ -31,9 +31,9 @@ export class AppComponent implements OnInit {
     if(this.accountService.currentUser())
     {
      
-      setTimeout(() => {
-        this.pollingService.startPolling();  // Call the method after 2 minutes
-      }, 120000);  
+      // setTimeout(() => {
+      //   this.pollingService.startPolling();  // Call the method after 2 minutes
+      // }, 120000);  
     }
     
   }

@@ -17,7 +17,7 @@
 }
 .iconUser{
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     background-color: #e3dede;
     height: min-content;
     border-radius: 20px;
@@ -161,4 +161,25 @@ background-color: black;
 .center{
     display: flex;
     justify-content: center;
+}
+.x{
+    background-color:inherit;
+
+   
+}
+.kl{
+    flex:10;
+    text-align: right;
+    margin-right: 10px;
+    
+}
+.xCon{
+    background-color: none;
+    color: red;
+    font-size: 30px;
+    padding: 4px;
+    transition: all 0.5s ease-in-out;
+}
+.xCon:hover{
+  color: black;
 }

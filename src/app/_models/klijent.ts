@@ -7,4 +7,5 @@ export interface Klijent {
     adresa:string,
     telefon:string,
     email:string;
+    idApotekara?:number;
 }

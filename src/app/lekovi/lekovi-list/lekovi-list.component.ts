@@ -8,7 +8,7 @@ import { Klijent } from '../../_models/klijent';
 import { KlijentService } from '../../_services/klijent.service';
 
 @Component({
-  selector: 'app-member-list',
+  selector: 'lekovi-list',
   standalone: true,
   imports: [RouterLink,FormsModule],
   templateUrl: './lekovi.html',

@@ -1,0 +1,91 @@
+
+<div class="d-flex justify-content-center p-5">
+    <div class="form-container">
+        <h2>Dodaj klijenta</h2>
+       
+        <form [formGroup]="receptForm" (ngSubmit)="onSubmit()">
+            <!-- Zaglavlje -->
+            <div class="form-group">
+              <label for="ime">Ime</label>
+              <input
+                id="ime"
+                type="text"
+                formControlName="ime"
+                [class.invalid]="receptForm.get('ime')?.invalid && receptForm.get('ime')?.touched"
+              />
+              <div *ngIf="receptForm.get('ime')?.invalid && receptForm.get('ime')?.touched" class="error">
+                Ime is required.
+              </div>
+            </div>
+        
+            <!-- Invocation -->
+            <div class="form-group">
+              <label for="prezime">Prezime</label>
+              <input
+                id="prezime"
+                type="text"
+                formControlName="prezime"
+                [class.invalid]="receptForm.get('prezime')?.invalid && receptForm.get('prezime')?.touched"
+              />
+              <div *ngIf="receptForm.get('prezime')?.invalid && receptForm.get('prezime')?.touched" class="error">
+                Prezime is required.
+              </div>
+            </div>
+        
+            <!-- Ordinatio -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                [class.invalid]="receptForm.get('email')?.invalid && receptForm.get('email')?.touched"
+              />
+              <div *ngIf="receptForm.get('email')?.invalid && receptForm.get('email')?.touched" class="error">
+                Email is required.
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="datumRodjenja">Datum Isteka</label>
+                <input type="date" id="datumRodjenja" formControlName="datumRodjenja" class="form-control" />
+                <div *ngIf="receptForm.get('datumRodjenja')?.invalid && receptForm.get('datumRodjenja')?.touched" class="error">
+                  Datum Isteka is required.
+                </div>
+              </div>
+        
+            <!-- Subskripcija -->
+            <div class="form-group">
+              <label for="telefon">Broj telefona</label>
+              <input
+                id="telefon"
+                type="text"
+                formControlName="telefon"
+                [class.invalid]="receptForm.get('telefon')?.invalid && receptForm.get('telefon')?.touched"
+              />
+              <div *ngIf="receptForm.get('telefon')?.invalid && receptForm.get('telefon')?.touched" class="error">
+                telefon must be a valid email and is required.
+              </div>
+            </div>
+        
+            <!-- Uputstvo -->
+            <div class="form-group">
+              <label for="adresa">Adresa</label>
+              <input
+              id="adresa"
+              type="text"
+              formControlName="adresa"
+              [class.invalid]="receptForm.get('adresa')?.invalid && receptForm.get('adresa')?.touched"
+            />
+              <div *ngIf="receptForm.get('adresa')?.invalid && receptForm.get('adresa')?.touched" class="error">
+                Uputstvo is required.
+              </div>
+            </div>
+        
+            <!-- Lek -->
+         
+        
+            <!-- Submit -->
+            <button type="submit" [disabled]="receptForm.invalid">Submit</button>
+          </form>    
+    </div>
+</div>

@@ -34,20 +34,32 @@ export class ListKlijentComponent {
         }
       })
     }
+    loadKlijentiString(naziv:string){
+      this.klijentService.getKlijentByName(naziv).subscribe({
+        next: (klijenti) => {
+          this.klijenti = klijenti;
+          console.log('Fetched lekovi:', klijenti);
+        },
+        error: (err) => console.error('Error loading lekovi:', err),
+      
+      
+      })
+    }
     detalji(id:number)
     {
       this.router.navigateByUrl(`/lekovi/${id}`)
     }
     dodaj()
     {
-      this.router.navigateByUrl('/addMed')
+      this.router.navigateByUrl('/addKlijent')
     }
     onSearchChange() {
       console.log('Search query changed:', this.searchQuery);
-     this.lekService.getLekByName(this.searchQuery);
-     this.lekService.getLekByName(this.searchQuery).subscribe({
-      next:(lekovi)=>{
-     this.lekovi=lekovi
+  
+
+     this.klijentService.getKlijentByName(this.searchQuery).subscribe({
+      next:(klijenti)=>{
+     this.klijenti=klijenti
       }
      });
     }

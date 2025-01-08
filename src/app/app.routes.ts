@@ -13,6 +13,9 @@ import { TransactionAllComponent } from './transaction-all/transaction-all.compo
 import { TransakcijeComponent } from './transakcije/transakcije.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ListKlijentComponent } from './list-klijent/list-klijent.component';
+import { ReceptiComponent } from './recepti/recepti.component';
+import { AddReceptComponent } from './add-recept/add-recept.component';
+import { AddKlijentComponent } from './add-klijent/add-klijent.component';
 
 export const routes: Routes = [
 
@@ -28,10 +31,13 @@ export const routes: Routes = [
         {path:'lekovi',component:LekListComponent},
         {path:'lekovi/:id',component:LekoviDetailsComponent},
         {path:'list-klijenti',component:ListKlijentComponent},
+        {path:'addKlijent',component:AddKlijentComponent},
         {path:'transakcije',component:TransakcijeComponent},
         {path:'addMed',component:AddLekComponent},
           {path:'transakcije/detalji',component:TransactionAllComponent},
-          {path:'transakcije/checkout',component:CheckoutComponent}
+          {path:'transakcije/checkout',component:CheckoutComponent},
+          {path:'recepti/:id',component:ReceptiComponent},
+          {path:'addRecept',component:AddReceptComponent}
     ]
 
   },

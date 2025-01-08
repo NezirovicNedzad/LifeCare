@@ -157,6 +157,11 @@ this.receptService.loadKlijentRecepts(id).subscribe({
   isLekInRecepti(lekId: number): boolean | undefined {
     return this.recepti?.some(recept => recept.idLeka === lekId);
   }
+
+  pogledajRecepte(){
+ this.router.navigateByUrl('recepti/'+this.receivedData.klijentId);
+    
+  }
   findReceptId(lekId:number)
   {
 
@@ -179,5 +184,16 @@ this.receptService.loadKlijentRecepts(id).subscribe({
 
     this.receivedData.cenatTotal=this.cena;
     
+  }
+
+
+  removeKlijent()
+  {
+    if(window.confirm('Da li stvarno zelite da izaberete drugog klijenta?'))
+    {
+      localStorage.removeItem('data');
+      window.location.replace('transakcije')
+    }
+   
   }
 }

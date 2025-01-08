@@ -1,0 +1,96 @@
+
+<div class="d-flex justify-content-center p-5">
+    <div class="form-container">
+        <h2>Dodaj recept</h2>
+       
+        <form [formGroup]="receptForm" (ngSubmit)="onSubmit()">
+            <!-- Zaglavlje -->
+            <div class="form-group">
+              <label for="zaglavlje">Zaglavlje</label>
+              <input
+                id="zaglavlje"
+                type="text"
+                formControlName="zaglavlje"
+                [class.invalid]="receptForm.get('zaglavlje')?.invalid && receptForm.get('zaglavlje')?.touched"
+              />
+              <div *ngIf="receptForm.get('zaglavlje')?.invalid && receptForm.get('zaglavlje')?.touched" class="error">
+                Zaglavlje is required.
+              </div>
+            </div>
+        
+            <!-- Invocation -->
+            <div class="form-group">
+              <label for="invocatio">Invocation</label>
+              <input
+                id="invocatio"
+                type="text"
+                formControlName="invocatio"
+                [class.invalid]="receptForm.get('invocatio')?.invalid && receptForm.get('invocatio')?.touched"
+              />
+              <div *ngIf="receptForm.get('invocatio')?.invalid && receptForm.get('invocatio')?.touched" class="error">
+                Invocation is required.
+              </div>
+            </div>
+        
+            <!-- Ordinatio -->
+            <div class="form-group">
+              <label for="ordinatio">Ordinatio</label>
+              <input
+                id="ordinatio"
+                type="text"
+                formControlName="ordinatio"
+                [class.invalid]="receptForm.get('ordinatio')?.invalid && receptForm.get('ordinatio')?.touched"
+              />
+              <div *ngIf="receptForm.get('ordinatio')?.invalid && receptForm.get('ordinatio')?.touched" class="error">
+                Ordinatio is required.
+              </div>
+            </div>
+        
+            <!-- Subskripcija -->
+            <div class="form-group">
+              <label for="subskripcija">Subskripcija</label>
+              <input
+                id="subskripcija"
+                type="text"
+                formControlName="subskripcija"
+                [class.invalid]="receptForm.get('subskripcija')?.invalid && receptForm.get('subskripcija')?.touched"
+              />
+              <div *ngIf="receptForm.get('subskripcija')?.invalid && receptForm.get('subskripcija')?.touched" class="error">
+                Subskripcija must be a valid email and is required.
+              </div>
+            </div>
+        
+            <!-- Uputstvo -->
+            <div class="form-group">
+              <label for="uputstvo">Uputstvo</label>
+              <textarea
+                id="uputstvo"
+                formControlName="uputstvo"
+                [class.invalid]="receptForm.get('uputstvo')?.invalid && receptForm.get('uputstvo')?.touched"
+              ></textarea>
+              <div *ngIf="receptForm.get('uputstvo')?.invalid && receptForm.get('uputstvo')?.touched" class="error">
+                Uputstvo is required.
+              </div>
+            </div>
+        
+            <!-- Lek -->
+            <div class="form-group">
+                <label for="lek">Lek</label>
+                <select
+                  id="lek"
+                  formControlName="idLeka"
+                  [class.invalid]="receptForm.get('idLeka')?.invalid && receptForm.get('idLeka')?.touched"
+                >
+                  <option value="" disabled selected>Select a Lek</option>
+                  <option *ngFor="let option of lekoviNaRecept" [value]="option.id">{{ option.naziv }}</option>
+                </select>
+                <div *ngIf="receptForm.get('idLeka')?.invalid && receptForm.get('idLeka')?.touched" class="error">
+                  Lek is required.
+                </div>
+              </div>
+        
+            <!-- Submit -->
+            <button type="submit" [disabled]="receptForm.invalid">Submit</button>
+          </form>    
+    </div>
+</div>

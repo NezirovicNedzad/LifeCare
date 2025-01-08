@@ -1,0 +1,37 @@
+
+<h3 class="title">Recepti za {{recievedData.ime}}</h3>
+<button (click)="addRecept()"  class="addMed">+</button>
+<div class="d-flex justify-content-center">
+
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Lek</th>
+                    <th>Izdavac Recepta</th>
+                    <th>Uputsvo</th>
+                    <th>Subskripcija</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for (recept of recepti; track $index) {
+                <tr>
+
+                    <td>{{recept.lekNaziv}}</td>
+                    @if(recept.isDoctorPrescribed)
+                    {
+                        <td>Doktor Nedzad Nezirovic</td>
+                    }
+                    @else{
+                        <td>{{recept.farmaceut}}</td> 
+                    }
+
+                    <td>{{recept.uputstvo}}</td>
+                    <td>{{recept.subskripcija}}</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+                
