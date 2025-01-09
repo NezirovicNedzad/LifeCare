@@ -33,5 +33,26 @@
             }
             </tbody>
         </table>
+ 
+        <div class="pagination-container">
+            <button (click)="goToPrevious()" [disabled]="pageNumber === 1">
+              Prethodni
+            </button>
+        
+            <button
+              *ngFor="let page of pages"
+              (click)="goToPage(page)"
+              [class.active]="page === pageNumber"
+            >
+              {{ page }}
+            </button>
+        
+            <span *ngIf="showDots && pageNumber < totalPages - 2">...</span>
+        
+            <button (click)="goToNext()" [disabled]="pageNumber === totalPages">
+              Sledeći
+            </button>
+          </div>
     </div>
+ 
                 

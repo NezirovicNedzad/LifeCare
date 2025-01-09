@@ -31,11 +31,13 @@
        <div class="cena">
         <p >Cena:{{lek?.cena}}din</p>
        </div>
+       <p>Kao Farmaceut mozete dodati zalihe ovog leka u  sistem!</p>
+       <p>Lekova u sistemu:{{lek?.kolicina}}</p>
        <div class="quantity-controls">
-        <button class="round-btn minus" onclick="decreaseValue()">−</button>
-        <input type="number" id="quantity" value="1" min="1" readonly>
-        <button class="round-btn plus" onclick="increaseValue()">+</button>
-        <button class="izdaj" onclick="issueItem()">Izdaj</button>
+        <button class="round-btn minus" (click)="decreaseValue()">−</button>
+        <input type="number" id="quantity" [(ngModel)]="quantity" min="1" readonly>
+        <button class="round-btn plus" (click)="increaseValue()">+</button>
+        <button class="izdaj" (click)="send()">Dodaj</button>
     </div>
 
     </div>

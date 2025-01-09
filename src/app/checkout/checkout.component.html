@@ -28,20 +28,37 @@
                 <div class="text">
                   <p>{{prodaja.naziv}}</p>
                   <p>{{prodaja.opis.slice(0,50)}}...</p>
-                  <p style="margin-top: 10px;font-size:18px">Cena:<strong>{{prodaja.cena*prodaja.kolicinaProizvoda}}din</strong></p>
+                  <p style="margin-top: 10px;font-size:18px;display: flex;"><span style="flex: 7;">Cena:<strong>{{prodaja.cena*prodaja.kolicinaProizvoda}}din</strong></span>
+                  
+                  <span style="flex: 1;">Kolicina:{{prodaja.kolicinaProizvoda}}</span>  
+                  </p>
+                  
                 </div>
                 <div class="proizvodCart">
                  @if (prodaja.naRecept) {
                     <button class="recept">Na recept!</button>
                       
                     
-                 }
-                  <p style="margin-top: 10px;">Kolicina:{{prodaja.kolicinaProizvoda}}</p>
+                 } <button (click)="ukloni($index)" class="ukloni"><i class="bi bi-trash3-fill iconTrash"> </i>  Ukloni</button>
+                   
+                 
                 </div>
                 
               </div>
         }
+       <div class="popust">
+        @if(imaPopust)
+        {
+         <span style="text-decoration: line-through;font-size: 19px;">Cena: {{cena}} din</span>
 
+         <strong style="font-size: 20px;">Smanjena cena: {{reducedCena}}din </strong>
+        }
+        @else {
+         <strong style="font-size: 20px;">Cena:{{cena}}din</strong>
+        }
+       </div>
+          
+          
 
         <div class="d-flex justify-content-center"></div><button (click)="showAlert()" class="izdaj">Izdaj</button>
     </div>

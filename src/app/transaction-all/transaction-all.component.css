@@ -9,12 +9,18 @@
 }
 .main{
     flex: 6;
+    padding: 5px;
    
+ }
+
+ .items{
     display: flex;
     
     flex-wrap: wrap;
     justify-content: center;
-}
+
+ }
+ 
 .iconUser{
     text-align: center;
     padding: 15px;
@@ -183,3 +189,31 @@ background-color: black;
 .xCon:hover{
   color: black;
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .pagination-container button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    color: black;
+  }
+  
+  .pagination-container button.active {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .pagination-container button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  

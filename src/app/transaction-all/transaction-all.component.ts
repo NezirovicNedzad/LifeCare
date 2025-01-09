@@ -20,8 +20,15 @@ import { Router } from '@angular/router';
 })
 export class TransactionAllComponent implements OnInit {
   quantity: number = 1;
+
+  totalRecords = 0;
+  pageSize = 8; // Matches backend default
+  pageNumber = 1;
+  totalPages = 0;
+ showDots=false;
   quantities: any = {};
 cena:number=0;
+pages: number[] = [];
   // Method to track items by id for *ngFor
   selectedLek: Lek | undefined; 
   private dataService=inject(SenderService);
@@ -48,16 +55,18 @@ this.loadLekovi();
 this.loadRecepti(this.receivedData.klijentId);
   }
 
-  loadLekovi()
-  {this.lekService.getLekovi().subscribe({
-    next: (lekovi) => {
-      this.lekovi = lekovi;
-      console.log('Fetched lekovi:', lekovi);
-    },
-    error: (err) => console.error('Error loading lekovi:', err),
-  
-  
-  })}
+  loadLekovi(){
+    this.lekService.getLekByName("", this.pageNumber,this.pageSize).subscribe({
+      next: (response) => {
+        this.lekovi = response.lekovi;
+        this.totalRecords = response.totalRecords;
+        this.totalPages = Math.ceil(this.totalRecords / this.pageSize);
+        this.setupPagination();
+        console.log('Fetched lekovi:', response);
+      },
+      error: (err) => console.error('Error loading lekovi:', err),
+    });
+  }
 
   loadRecepti(id:number)
   {
@@ -196,4 +205,42 @@ this.receptService.loadKlijentRecepts(id).subscribe({
     }
    
   }
+
+  setupPagination() {
+    const visiblePages = 4; // Number of visible pages
+    this.pages = [];
+    this.showDots = false;
+
+    if (this.totalPages <= visiblePages) {
+      this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    } else {
+      this.showDots = true;
+      const start = Math.max(1, this.pageNumber - 2);
+      const end = Math.min(this.totalPages, start + visiblePages - 1);
+
+      for (let i = start; i <= end; i++) {
+        this.pages.push(i);
+      }
+    }
+  }
+  goToPrevious() {
+    if (this.pageNumber > 1) {
+      this.pageNumber--;
+      this.loadLekovi();
+    }
+  }
+
+  goToNext() {
+    if (this.pageNumber < this.totalPages) {
+      this.pageNumber++;
+      this.loadLekovi();
+    }
+  }
+  goToPage(page: number) {
+    if (page !== this.pageNumber) {
+      this.pageNumber = page;
+      this.loadLekovi();
+    }
+  }
+
 }

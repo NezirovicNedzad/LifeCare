@@ -7,6 +7,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    margin: 10px;
 }
 
 thead {
@@ -55,3 +56,30 @@ td {
     transform: scale(1.1); 
   
   }
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .pagination-container button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    color: black;
+  }
+  
+  .pagination-container button.active {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .pagination-container button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  

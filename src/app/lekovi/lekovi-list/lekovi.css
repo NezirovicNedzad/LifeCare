@@ -137,4 +137,29 @@ margin: 10px;
   .search-button:hover {
     background-color: black;
   }
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .pagination-container button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination-container button.active {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .pagination-container button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
   

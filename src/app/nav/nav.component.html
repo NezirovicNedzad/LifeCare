@@ -50,7 +50,12 @@
       <div dropdown class="dropdown">
         <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray px-2">PROFIL</a>
         <div *dropdownMenu class="dropdown-menu">
-          <a class="dropdown-item itemDropdown"><i class="bi bi-person-fill icon"></i>Uredi profil</a>
+          @if(accountService.currentUser()?.role==='Admin')
+          {
+            <a routerLink="/admin-register" class="dropdown-item itemDropdown"><i class="bi bi-person-fill icons"></i> Dodaj korisnike</a>
+            <a routerLink="/admin-transakcije" class="dropdown-item itemDropdown"><i class="bi bi-list-columns-reverse icons"></i> Transakcije</a>
+          }
+         
           <div class="divider"></div>
           <a class="dropdown-item itemDropdown" (click)="logout()" ><i class="bi bi-box-arrow-right icons"></i>
             Logout</a>

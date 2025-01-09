@@ -1,10 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ReceptsForKlijent } from '../_models/receptsKlijent';
 import { Recept } from '../_models/recepts';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AccountService } from './account.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class ReceptService {
 
   baseUrl=environment.apiUrl;
    private http=inject(HttpClient);
+   private accountService=inject(AccountService);
    private toastr=inject(ToastrService);
    private router=inject(Router);
 
@@ -21,6 +24,14 @@ export class ReceptService {
    {
     
    return this.http.get<ReceptsForKlijent[]>(this.baseUrl+'recept/klijent/'+idKlijenta);
+   }
+   
+   loadKlijentReceptsPagin(idKlijenta:number,pageNumber:number,pageSize:number)
+   {
+    const params = new HttpParams()
+          .set('pageSize',pageSize.toString())
+          .set('pageNumber', pageNumber.toString());
+   return this.http.get<any>(this.baseUrl+'recept/klijentPagin/'+idKlijenta,{params,...this.getHttpOptions()});
    }
 
 
@@ -44,4 +55,11 @@ export class ReceptService {
       }
     });
    }
+    getHttpOptions(){
+       return{
+         headers:new HttpHeaders({
+           Authorization:`Bearer ${this.accountService.currentUser()?.token}`
+         })
+       }
+     }
 }

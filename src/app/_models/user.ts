@@ -5,4 +5,5 @@ id:number,
     email:string,
     phone?:string,
     token:string;
+    role:string;
 }

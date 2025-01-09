@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
         this.CalculateCena(); // Initial calculation for new lek cena
       }
     });
-  
+  console.log(this.accountService.currentUser()?.role);
     
  
   }

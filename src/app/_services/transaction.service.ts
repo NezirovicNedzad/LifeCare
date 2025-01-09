@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { delay } from 'rxjs';
 import { Router } from '@angular/router';
 import { SenderService } from './sender.service';
+import { Popust } from '../_models/popust';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,12 @@ private data=inject(SenderService);
   private router=inject(Router)
   
 
+
+
+  getPopust(id:number | undefined,cena:number)
+  {
+   return  this.http.get<Popust>(this.baseUrl+'transakcija/popust/'+id+'?cenaTotal='+cena);
+  }
 
   dodajTransakciju(order:Order | undefined)
   {

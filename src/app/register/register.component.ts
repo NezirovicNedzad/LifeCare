@@ -1,14 +1,15 @@
 import { Component, inject, input, OnInit, output, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
-import { JsonPipe, NgIf } from '@angular/common';
+import { CommonModule, JsonPipe, NgIf } from '@angular/common';
 import { TextInputComponent } from "../_forms/text-input/text-input.component";
 import { Router } from '@angular/router';
 import {ValidationE} from '../_models/validation'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, TextInputComponent],
+  imports: [ReactiveFormsModule, NgIf, TextInputComponent,CommonModule,ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -16,6 +17,7 @@ import {ValidationE} from '../_models/validation'
 export class RegisterComponent implements OnInit {
   
   private accountService=inject(AccountService);
+  private toastr=inject(ToastrService);
   private fb=inject(FormBuilder)
   private router=inject(Router);
  
@@ -23,9 +25,19 @@ export class RegisterComponent implements OnInit {
  
   registerForm:FormGroup=new FormGroup({});
   validationErrors:string[ ] | undefined;
-
+  roles = [
+    { role: 'Apotekar' },
+    { role: 'Admin' },
+    { role: 'Farmaceut' }
+  ];
   ngOnInit(): void {
   this.initializeForm();
+  console.log(this.roles);
+  this.roles = [
+    { role: 'Apotekar' },
+    { role: 'Admin' },
+    { role: 'Farmaceut' }
+  ];
   }
   
   initializeForm(){
@@ -37,6 +49,7 @@ export class RegisterComponent implements OnInit {
       email:['',[Validators.email,Validators.required]],
       phone:['',Validators.required],
       password:['',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
+      role:['',Validators.required],
       confirmPassword:['',[Validators.required,this.matchValues('password')]]
     });
     this.registerForm.controls['password'].valueChanges.subscribe({
@@ -58,7 +71,11 @@ export class RegisterComponent implements OnInit {
 
      this.accountService.register(this.registerForm.value).subscribe({
        next:_=>{
-        this.router.navigateByUrl('/members');
+        this.toastr.success("Uspesno dodat novi korisnik!");
+
+        setTimeout(()=>  this.router.navigateByUrl('/lekovi'),1500
+        )
+       
          this.cancel();
        },
    error:error=>{

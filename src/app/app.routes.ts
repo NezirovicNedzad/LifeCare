@@ -21,7 +21,7 @@ export const routes: Routes = [
 
  
   {path:'',component:LoginComponent},
-  {path:'sign-up',component:RegisterComponent},
+
   
   {
     path:'',
@@ -37,7 +37,8 @@ export const routes: Routes = [
           {path:'transakcije/detalji',component:TransactionAllComponent},
           {path:'transakcije/checkout',component:CheckoutComponent},
           {path:'recepti/:id',component:ReceptiComponent},
-          {path:'addRecept',component:AddReceptComponent}
+          {path:'addRecept',component:AddReceptComponent},
+          {path:'admin-register',component:RegisterComponent},
     ]
 
   },

@@ -2,7 +2,7 @@
 <div class="center">
 <form [formGroup]="registerForm" class="registerForm" (ngSubmit)="register()" autocomplete="off">
     
-    <h2 class="text-center text">Sign up</h2>
+    <h2 class="text-center text">Registruj nove korisnike</h2>
   
     
     <app-text-input [formControl]="$any(registerForm.controls['name'])"
@@ -19,6 +19,26 @@
     [label]="'Email'"
     type="text"
     ></app-text-input>
+
+    <div class="mb-3 form-floating">
+        <div class="form-group">
+            <label for="role">Uloga:</label>
+            <select
+              id="role"
+              formControlName="role"
+              [class.invalid]="registerForm.get('role')?.invalid && registerForm.get('role')?.touched"
+            >
+              <option value="" disabled selected>Select a role</option>
+              <option *ngFor="let option of roles" [value]="option.role">{{ option.role }}</option>
+            </select>
+            <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error">
+              Uloga je obavezna.
+            </div>
+        </div>
+       
+    
+      
+    </div>
     
     <app-text-input  [formControl]="$any(registerForm.controls['phone'])"
     [label]="'Phone'"
