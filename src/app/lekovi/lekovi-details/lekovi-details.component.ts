@@ -18,15 +18,12 @@ export class LekoviDetailsComponent implements OnInit {
  lek:any;
  quantity:number=1;
  private lekoviService=inject(LekService);
- 
-  constructor(private route: ActivatedRoute) {
+ private route=inject(ActivatedRoute);
+  
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.routeParam = Number(params.get('id')) || 0;
     });
-  }
-  
-  ngOnInit(): void {
-     console.log(this.routeParam);
     this.loadLek(this.routeParam);
 
   }

@@ -78,4 +78,9 @@ export class ListKlijentComponent {
       return datePart; // Return the date part directly
     }
 
+    goTransaction(id:number){
+      this.router.navigateByUrl('/transakcije-klijent/'+id)
+    }
+ 
+
 }

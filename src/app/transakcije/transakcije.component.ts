@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { Klijent } from '../_models/klijent';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { KlijentService } from '../_services/klijent.service';
 import { TransactionAllComponent } from "../transaction-all/transaction-all.component";
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { Order } from '../_models/order';
 @Component({
   selector: 'app-transakcije',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,RouterLink],
   templateUrl: './transakcije.component.html',
   styleUrl: './transakcije.component.css'
 })

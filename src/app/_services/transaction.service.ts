@@ -27,6 +27,15 @@ private data=inject(SenderService);
   {
    return  this.http.get<Popust>(this.baseUrl+'transakcija/popust/'+id+'?cenaTotal='+cena);
   }
+  getKlijentTrans(id:number,pageSize:number,pageNumber:number)
+  {
+   return  this.http.get<any>(this.baseUrl+'transakcija/klijent/'+id+'?pageSize='+pageSize+'&pageNumber='+pageNumber);
+  }
+
+  getCenaKlijentovihTransakcija(id:number)
+  {
+    return  this.http.get<any>(this.baseUrl+'transakcija/klijent/'+id+'/cena'); 
+  }
 
   dodajTransakciju(order:Order | undefined)
   {

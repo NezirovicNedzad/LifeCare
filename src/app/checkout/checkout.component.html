@@ -24,8 +24,11 @@
 
         @for (prodaja of order?.prodajaDetalji; track $index) {
             <div style="width:720px;padding:10px;border: 1px dotted;display: flex;margin: 5px;">
+            
                 <img src="{{prodaja.photoUrl}}" width="200" height="150"/>
+                
                 <div class="text">
+                  
                   <p>{{prodaja.naziv}}</p>
                   <p>{{prodaja.opis.slice(0,50)}}...</p>
                   <p style="margin-top: 10px;font-size:18px;display: flex;"><span style="flex: 7;">Cena:<strong>{{prodaja.cena*prodaja.kolicinaProizvoda}}din</strong></span>
@@ -35,14 +38,15 @@
                   
                 </div>
                 <div class="proizvodCart">
+                 <button (click)="ukloni($index)" class="ukloni"><i class="bi bi-trash3-fill iconTrash"> </i>  Ukloni</button>
+                   
                  @if (prodaja.naRecept) {
-                    <button class="recept">Na recept!</button>
+                    <span style="color: red;margin-top: 10px;">Na recept!</span>
                       
                     
-                 } <button (click)="ukloni($index)" class="ukloni"><i class="bi bi-trash3-fill iconTrash"> </i>  Ukloni</button>
-                   
-                 
+                 }    
                 </div>
+             
                 
               </div>
         }

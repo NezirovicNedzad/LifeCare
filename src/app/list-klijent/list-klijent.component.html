@@ -30,8 +30,8 @@
                       <p >Telefon:<strong>{{klijent.telefon}}</strong></p>
                     </div>
                     <div class="proizvodCart">
-                        <button class="recepti">Recepti</button>
-                        <button class="transakcije">Transakcije</button>
+                    
+                        <button (click)="goTransaction(klijent.id)" class="transakcije">Transakcije</button>
                     
                     </div>
                     

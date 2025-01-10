@@ -26,37 +26,41 @@ private router=inject(Router);
 
 
   }
-  getHttpOptions(){
-      return{
-        headers:new HttpHeaders({
-          Authorization:`Bearer ${this.accountService.currentUser()?.token}`
-        })
-      }
-    }
-   getKlijentByName(naziv:string)
-    {
-      return this.http.get<Klijent[]>(this.baseUrl+'klijent/search?naziv='+naziv,this.getHttpOptions())
-    }  
+  getKlijentByName(naziv:string)
+  {
+    return this.http.get<Klijent[]>(this.baseUrl+'klijent/search?naziv='+naziv,this.getHttpOptions())
+  }  
+  getKlijentById(id:number)
+  {
+    return this.http.get<Klijent>(this.baseUrl+'klijent/'+id,this.getHttpOptions())
+  }  
   AddKlijent(klijent:Klijent | undefined){
     
         this.http.post(this.baseUrl+'klijent', klijent).subscribe({
           next: (response) => {
-          
+            
             this.toastr.success("Uspesno ste dodali klijenta!");
             
             setTimeout(() => {
-             // Remove item from localStorage
-             // Navigate to the route
-             this.router.navigateByUrl('list-klijenti');
-    
+              // Remove item from localStorage
+              // Navigate to the route
+              this.router.navigateByUrl('list-klijenti');
+              
             }, 1500);
-          
+            
           },
           error: (err) => {
             this.toastr.error(`Neuspesna dodaja ${err}!`);
           }
         });
-       }
-  
-  
-}
+      }
+      
+      
+      getHttpOptions(){
+          return{
+            headers:new HttpHeaders({
+              Authorization:`Bearer ${this.accountService.currentUser()?.token}`
+            })
+          }
+        }
+    }
