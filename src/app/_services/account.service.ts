@@ -14,7 +14,7 @@ export class AccountService {
   baseUrl=environment.apiUrl;
   currentUser=signal<User | null>(null);
   login(model:any){
-    return this.http.post<User>(this.baseUrl+'account/login',model).pipe(
+    return this.http.post<User>('https://nedzad6-001-site1.mtempurl.com/api/account/login',model).pipe(
       map(user => {
 
             if(user){
