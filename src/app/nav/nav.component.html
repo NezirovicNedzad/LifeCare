@@ -37,19 +37,64 @@
            @if(accountService.currentUser()){
           <li><a routerLinkActive="active" routerLink="/lekovi" class="nav-link px-2 text-gray">LEKOVI</a></li>
           <li><a routerLinkActive="active" routerLink="/list-klijenti" class="nav-link px-2 text-gray">KLIJENTI</a></li>
+       
+        @if(accountService.currentUser()?.role!='Admin')
+        {
           <li><a routerLinkActive="active" routerLink="/transakcije" class="nav-link px-2 text-gray">TRANSAKCIJE</a></li>
+        }
+          
           }
           <!-- <li><a routerLinkActive="active" routerLink="/errors" class="nav-link px-2 text-gray">Errors</a></li> -->
         </ul>
       
       </div>
 
-
+      @if(accountService.currentUser()?.role!='Admin' && accountService.currentUser() ){
+        <div dropdown class="dropdown">
+          <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray px-2 ">NARUDZBINA<i  class="bi bi-cart-fill icon"></i></a>
+          @if(recievedData)
+          {
+            
+            <div *dropdownMenu class="dropdown-menu order">
+              <p class="cartTitle">Za:{{recievedData.ime}}</p>
+              <div class="order-items">
+              @for (lek of recievedData.prodajaDetalji; track $index) {
+                <div class="order-item d-flex align-items-center justify-content-center gap-3 border p-2">
+                  <img src="{{lek.photoUrl}}" width="50" height="50"/>
+                  <div class="d">
+                    {{lek.naziv}}
+                  </div>
+                  <div class="proizvodCart">
+                   
+                    <p>x{{lek.kolicinaProizvoda}}</p>
+                  </div>
+                  
+                </div>
+                
+              }
+              <p class="cartCena">Cena:{{cena}}din.</p>
+              <button (click)="checkout()" class="checkout">Checkout</button>
+              </div>
+            </div>
+          }
+        
+          
+          
+        </div>
+      }
+  
 
     @if(accountService.currentUser()){
       <div dropdown class="dropdown">
         <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray px-2">PROFIL</a>
         <div *dropdownMenu class="dropdown-menu">
+          @if(accountService.currentUser()?.role!='Admin')
+          {
+          <a class="dropdown-item itemDropdown"  ><i class="bi bi-person-fill icons"></i>:{{accountService.currentUser()?.name+ ' ' +this.accountService.currentUser()?.surname}}</a>
+          
+          }
+          <a class="dropdown-item itemDropdown"  ><i class="bi bi-file-medical-fill icons"></i>:{{accountService.currentUser()?.role}}</a>
+          
           @if(accountService.currentUser()?.role==='Admin')
           {
             <a routerLink="/admin-register" class="dropdown-item itemDropdown"><i class="bi bi-person-fill icons"></i> Dodaj korisnike</a>
@@ -64,40 +109,7 @@
       </div>
     }
     
-    @if(accountService.currentUser() ){
-      <div dropdown class="dropdown">
-        <a dropdownToggle routerLinkActive="active" class="dropdown-toggle  text-decoration-none text-gray px-2 ">NARUDZBINA<i  class="bi bi-cart-fill icon"></i></a>
-        @if(recievedData)
-        {
-          
-          <div *dropdownMenu class="dropdown-menu order">
-            <p class="cartTitle">Za:{{recievedData.ime}}</p>
-            <div class="order-items">
-            @for (lek of recievedData.prodajaDetalji; track $index) {
-              <div class="order-item d-flex align-items-center justify-content-center gap-3 border p-2">
-                <img src="{{lek.photoUrl}}" width="50" height="50"/>
-                <div class="d">
-                  {{lek.naziv}}
-                </div>
-                <div class="proizvodCart">
-                 
-                  <p>x{{lek.kolicinaProizvoda}}</p>
-                </div>
-                
-              </div>
-              
-            }
-            <p class="cartCena">Cena:{{cena}}din.</p>
-            <button (click)="checkout()" class="checkout">Checkout</button>
-            </div>
-          </div>
-        }
-      
-        
-        
-      </div>
-    }
-
+ 
       <!-- Login Form -->
       @if(!accountService.currentUser()){
     

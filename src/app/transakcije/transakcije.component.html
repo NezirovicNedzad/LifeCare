@@ -1,7 +1,17 @@
 
 <div class="novi">
     <div class="info-div">
-        Dodavanje transakcija pocinje sa izabirom klijenta.Ako klijent ne postoji dodajte <a routerLink="/addKlijent">ovde!</a>
+        Dodavanje transakcija pocinje sa odabirom klijenta.
+        
+        @if(accountService.currentUser()?.role!='Apotekar')
+        {
+          Ako klijent ne postoji dodati ga moze samo apotekar!
+        }
+        @else
+        {
+          Ako klijent ne postoji dodajte <a routerLink="/addKlijent">ovde!</a>
+        }
+       
     </div>
 </div>
 <div class="container-fluid">

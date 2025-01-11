@@ -8,6 +8,7 @@ import { RouterOutlet } from '@angular/router';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 import { CheckForReceptsComponent } from "./check-for-recepts/check-for-recepts.component";
 import { PoolingService } from './_services/pooling.service';
+import { SignalRService } from './_services/signal-r.service';
   // Add this import
 
 @Component({
@@ -21,20 +22,27 @@ export class AppComponent implements OnInit {
   
   private accountService=inject(AccountService);
   private pollingService=inject(PoolingService);
+  private signalRService=inject(SignalRService);
+  constructor() {}
 
- 
+
   
   ngOnInit(): void {
   
     this.setCurrentUser();
 
-    if(this.accountService.currentUser())
-    {
+    // if(this.accountService.currentUser())
+    // {
      
-      // setTimeout(() => {
-      //   this.pollingService.startPolling();  // Call the method after 2 minutes
-      // }, 120000);  
-    }
+    //   setTimeout(() => {
+    //     this.pollingService.startPolling();  // Call the method after 2 minutes
+    //   }, 120000);  
+    // }
+     // Start the SignalR connection
+     this.signalRService.startConnection();
+
+     // Listen for notifications
+     this.signalRService.addNotificationListener();
     
   }
 

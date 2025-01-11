@@ -5,6 +5,7 @@ import { Order } from '../_models/order';
 import { ReceptsForKlijent } from '../_models/receptsKlijent';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-recepti',
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
 export class ReceptiComponent implements OnInit {
   private receptiService=inject(ReceptService);
   private dataService=inject(SenderService);
+  accountService=inject(AccountService);
   totalRecords = 0;
   pageSize = 10; // Matches backend default
   pageNumber = 1;

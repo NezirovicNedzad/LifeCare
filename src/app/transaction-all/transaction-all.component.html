@@ -23,9 +23,16 @@
     </div>
 
     <div class="recepti">
-     <h6>Recepti</h6>
-     <p>Lekovi na recept za koji dati korrisnik poseduje recept su obojeni zelenom bojom i moguce je ih izdati.</p>
+     <h6 style="text-align: center;">Recepti</h6>
+     @if( accountService.currentUser()?.role=='Farmaceut'){
+      <p>Lekovi na recept za koji dati korrisnik poseduje recept su obojeni zelenom bojom i moguce je ih izdati.</p>
+    }  
+    @else {
+      <p>Kao apotekar ne mozete izdate lekove za koji je potreban recept.Zeleno obojeni lekovi poseduju recept ali ih moze izdati samo farmaceut.</p>
+    }
      <p>Ako želite da pogledate izdate recepte pogledajte ispod.</p>
+
+  
     <div class="center"><button (click)="pogledajRecepte()" class="receptiP"><i class="bi bi-list-check iconR"></i>Recepti</button></div> 
 
     </div>
@@ -40,8 +47,12 @@
 
      @if(lek.kolicina>0)
      {
+
+     
     @if(isLekInRecepti(lek.id))
     {
+    
+    
       <div class="item" style="background-color: #aedcae;" >
         <div class="begin"><p class="naslov">{{lek.naziv}}</p>
 
@@ -55,7 +66,8 @@
         <img src="{{lek.photoUrl}}" width="200" height="200">
         <p class="opis">{{lek.opis.slice(0,20)}} ...</p>
         <p class="cena">Cena: {{lek.cena}}.00din</p>
-        @if (lek.naRecept) {
+       
+          @if(accountService.currentUser()?.role=='Farmaceut' && lek.naRecept){
           <div class="quantity-container">
             <button class="button-circle" (click)="decreaseQuantity(lek.id)">-</button>
             <div class="value-circle">{{ quantities[lek.id] || 1 }}</div>

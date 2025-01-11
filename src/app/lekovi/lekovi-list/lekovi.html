@@ -13,7 +13,9 @@
           🔍
         </button>
       </div>
-    <button (click)="dodaj()" class="addMed">+</button>
+      @if(accountService.currentUser()?.role=='Farmaceut')
+      {  <button (click)="dodaj()" class="addMed">+</button>}
+  
     
     <div class="row">
     

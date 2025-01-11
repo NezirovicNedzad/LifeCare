@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Lek } from '../../_models/lek';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, NgIf } from '@angular/common';
+import { AccountService } from '../../_services/account.service';
 
 @Component({
   selector: 'app-lekovi-details',
@@ -18,6 +19,8 @@ export class LekoviDetailsComponent implements OnInit {
  lek:any;
  quantity:number=1;
  private lekoviService=inject(LekService);
+
+  accountService=inject(AccountService);
  private route=inject(ActivatedRoute);
   
   ngOnInit(): void {

@@ -6,6 +6,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Klijent } from '../../_models/klijent';
 import { KlijentService } from '../../_services/klijent.service';
+import { AccountService } from '../../_services/account.service';
 
 @Component({
   selector: 'lekovi-list',
@@ -23,7 +24,7 @@ export class LekListComponent implements OnInit {
 
   private router=inject(Router)
   private lekService=inject(LekService);
-  private klijentService=inject(KlijentService);
+  accountService=inject(AccountService);
   lekovi:Lek[]=[];
   showDots = false;
   klijenti:Klijent[]=[];

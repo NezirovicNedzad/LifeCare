@@ -31,6 +31,8 @@
        <div class="cena">
         <p >Cena:{{lek?.cena}}din</p>
        </div>
+     @if(accountService.currentUser()?.role=='Farmaceut')
+     {
        <p>Kao Farmaceut mozete dodati zalihe ovog leka u  sistem!</p>
        <p>Lekova u sistemu:{{lek?.kolicina}}</p>
        <div class="quantity-controls">
@@ -38,8 +40,8 @@
         <input type="number" id="quantity" [(ngModel)]="quantity" min="1" readonly>
         <button class="round-btn plus" (click)="increaseValue()">+</button>
         <button class="izdaj" (click)="send()">Dodaj</button>
-    </div>
-
+       </div>
+    }
     </div>
 </div>
 

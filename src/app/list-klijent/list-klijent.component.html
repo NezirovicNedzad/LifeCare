@@ -14,7 +14,11 @@
           🔍
         </button>
       </div>
-    <button (click)="dodaj()" class="addMed">+</button>
+      @if(accountService.currentUser()?.role=='Apotekar')
+      {
+        <button (click)="dodaj()" class="addMed">+</button>
+      }
+
     
     <div class="row">
     
@@ -30,8 +34,12 @@
                       <p >Telefon:<strong>{{klijent.telefon}}</strong></p>
                     </div>
                     <div class="proizvodCart">
+                      @if(accountService.currentUser()?.role !='Apotekar')
+                      {
+                        <button (click)="goTransaction(klijent.id)" class="transakcije">Transakcije</button>  
+                      }
                     
-                        <button (click)="goTransaction(klijent.id)" class="transakcije">Transakcije</button>
+                      
                     
                     </div>
                     

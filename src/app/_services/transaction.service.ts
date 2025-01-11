@@ -31,6 +31,10 @@ private data=inject(SenderService);
   {
    return  this.http.get<any>(this.baseUrl+'transakcija/klijent/'+id+'?pageSize='+pageSize+'&pageNumber='+pageNumber);
   }
+  getTrans(pageSize:number,pageNumber:number)
+  {
+   return  this.http.get<any>(this.baseUrl+'transakcija/?pageSize='+pageSize+'&pageNumber='+pageNumber);
+  }
 
   getCenaKlijentovihTransakcija(id:number)
   {

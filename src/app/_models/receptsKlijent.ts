@@ -8,7 +8,7 @@ export interface ReceptsForKlijent {
  idLeka:number,
  lekNaziv:string,
  farmaceut:string,
- isDoctorPrescribed:boolean
+ isDoctorPresribed:boolean
  
  
 

@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SenderService } from '../_services/sender.service';
 import { Order } from '../_models/order';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-transakcije',
@@ -17,6 +18,7 @@ import { Order } from '../_models/order';
 })
 export class TransakcijeComponent implements OnInit {
 private dataService=inject(SenderService)
+accountService=inject(AccountService);
   router=inject(Router);
  klijenti:Klijent[] | undefined
  searchQuery: string = '';

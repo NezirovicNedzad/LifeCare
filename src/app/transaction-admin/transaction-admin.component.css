@@ -1,0 +1,147 @@
+.cont{
+    display: flex;
+}
+
+
+.main{
+flex: 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconUserCont{
+    flex: 1;
+}
+.iconUser{
+    
+    text-align: center;
+    padding: 20px;
+    background-color: #e3dede;
+    height: min-content;
+    border-radius: 20px;
+    
+}
+
+.oder{
+    padding: 10px;
+    border:1px dotted #fefe;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    flex: 5;
+
+}
+.recept{
+    background-color: #cc3300;
+    border-radius: 10px;
+    padding: 4px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    animation: pulsate 1.5s infinite;   
+    align-items: center;
+    border: none;
+}
+.ukloni{
+    background-color: inherit;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    color:white;
+    border: none;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.4s ease-in-out;
+}
+.ukloni:hover{
+background-color: black;
+}
+.iconTrash{
+    margin-right: 5px;
+    color: white
+}
+.popust{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.proizvodCart{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items:right;
+    flex:1
+}
+.icon{
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .izdaj{
+    background-color:#3EB489 ;
+    margin: 15px;
+padding: 10px;
+width: 400px;
+font-size: 18px;
+    color: white;
+    border: none;
+  }
+  .izdaj:hover{
+    background-color: black;
+  }
+  .transakcija{
+    padding: 10px;
+    width: 700px;
+  
+    margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border-radius: 7px;
+    
+  }
+  .prodaje{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    align-items: center;
+
+  
+  }
+  .side{
+    padding: 20px;
+    flex: 1;
+  }
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .pagination-container button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination-container button.active {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .pagination-container button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  

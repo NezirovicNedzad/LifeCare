@@ -1,6 +1,8 @@
 
 <h3 class="title">Recepti za {{recievedData.ime}}</h3>
-<button (click)="addRecept()"  class="addMed">+</button>
+@if(accountService.currentUser()?.role=='Farmaceut')
+{<button (click)="addRecept()"  class="addMed">+</button>}
+
 <div class="d-flex justify-content-center">
 
 
@@ -19,7 +21,7 @@
                 <tr>
 
                     <td>{{recept.lekNaziv}}</td>
-                    @if(recept.isDoctorPrescribed)
+                    @if(recept.isDoctorPresribed)
                     {
                         <td>Doktor Nedzad Nezirovic</td>
                     }

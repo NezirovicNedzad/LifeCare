@@ -5,6 +5,7 @@ import { Lek } from '../_models/lek';
 import { FormsModule } from '@angular/forms';
 import { Klijent } from '../_models/klijent';
 import { KlijentService } from '../_services/klijent.service';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-list-klijent',
@@ -17,6 +18,7 @@ export class ListKlijentComponent {
   private router=inject(Router)
     private lekService=inject(LekService);
     private klijentService=inject(KlijentService);
+    accountService=inject(AccountService);
      klijenti:Klijent[]=[];
     lekovi:Lek[]=[];
     searchQuery: string = '';

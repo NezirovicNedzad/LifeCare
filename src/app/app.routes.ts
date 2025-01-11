@@ -18,6 +18,7 @@ import { AddReceptComponent } from './add-recept/add-recept.component';
 import { AddKlijentComponent } from './add-klijent/add-klijent.component';
 import { TransactionAdminComponent } from './transaction-admin/transaction-admin.component';
 import { TransactionKlijentComponent } from './transaction-klijent/transaction-klijent.component';
+import { farmaceutGuard } from './_guards/farmaceut.guard';
 
 export const routes: Routes = [
 
@@ -35,12 +36,15 @@ export const routes: Routes = [
         {path:'list-klijenti',component:ListKlijentComponent},
         {path:'addKlijent',component:AddKlijentComponent},
         {path:'transakcije',component:TransakcijeComponent},
-        {path:'addMed',component:AddLekComponent},
+        {path:'addMed',
+          canActivate:[farmaceutGuard],
+          component:AddLekComponent,
+        },
           {path:'transakcije/detalji',component:TransactionAllComponent},
           {path:'transakcije/checkout',component:CheckoutComponent},
           {path:'transakcije-klijent/:id',component:TransactionKlijentComponent},
           {path:'recepti/:id',component:ReceptiComponent},
-          {path:'addRecept',component:AddReceptComponent},
+          {path:'addRecept',canActivate:[farmaceutGuard],component:AddReceptComponent},
           {path:'admin-register',component:RegisterComponent},
           {path:'admin-transakcije',component:TransactionAdminComponent},
     ]

@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Prodaja } from '../_models/prodaja';
 import { Order } from '../_models/order';
 import { Router } from '@angular/router';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-transaction-all',
@@ -36,6 +37,7 @@ pages: number[] = [];
   private lekService=inject(LekService);
   private receptService=inject(ReceptService);
   private toastr=inject(ToastrService);
+  accountService=inject(AccountService);
   lekovi:Lek[] | undefined;
   recepti:ReceptsForKlijent[] | undefined;
   receivedData: any;

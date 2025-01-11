@@ -67,10 +67,16 @@ this.cena=0;
 
     
     }
+    else
+    {
+      this.order.cenaTotal=this.cena;
+    }
     
-    const userConfirmed = confirm('Da li zelite da izdate ove lekove?');
-    if (userConfirmed) {
-      this.transactionService.dodajTransakciju(this.order);
+  const userConfirmed = confirm('Da li zelite da izdate ove lekove?');
+  
+  if (userConfirmed) {
+       this.transactionService.dodajTransakciju(this.order);
+      console.log(this.order);
     } else {
       alert('Niste narucilii!');
     }
