@@ -25,7 +25,7 @@ export class AccountService {
     )
   }
   register(model:any){
-    return this.http.post<User>(this.baseUrl+'account/register',model).pipe(
+    return this.http.post<User>('https://nedzad6-001-site1.mtempurl.com/api/register',model).pipe(
       map(user => {
 
            
