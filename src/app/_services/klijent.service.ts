@@ -22,7 +22,7 @@ private router=inject(Router);
   {
 
 
-    return this.http.get<Klijent[]>('https://nedzad6-001-site1.mtempurl.com/ap/iklijent',this.getHttpOptions());
+    return this.http.get<Klijent[]>('https://nedzad6-001-site1.mtempurl.com/api/klijent',this.getHttpOptions());
 
 
   }
@@ -36,7 +36,7 @@ private router=inject(Router);
   }  
   AddKlijent(klijent:Klijent | undefined){
     
-        this.http.post('https://nedzad6-001-site1.mtempurl.com/klijent', klijent).subscribe({
+        this.http.post('https://nedzad6-001-site1.mtempurl.com/api/klijent', klijent).subscribe({
           next: (response) => {
             
             this.toastr.success("Uspesno ste dodali klijenta!");
