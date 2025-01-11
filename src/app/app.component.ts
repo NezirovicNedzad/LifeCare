@@ -31,14 +31,7 @@ export class AppComponent implements OnInit {
   
     this.setCurrentUser();
 
-    // if(this.accountService.currentUser())
-    // {
-     
-    //   setTimeout(() => {
-    //     this.pollingService.startPolling();  // Call the method after 2 minutes
-    //   }, 120000);  
-    // }
-     // Start the SignalR connection
+  
      this.signalRService.startConnection();
 
      // Listen for notifications

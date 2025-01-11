@@ -17,7 +17,7 @@ private http=inject(HttpClient);
   // Start SignalR connection
   public startConnection(): void {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:5001/notificationHub')  // Your SignalR hub URL
+      .withUrl('http://nedzad6-001-site1.mtempurl.com/api/notificationHub')  // Your SignalR hub URL
       .build();
 
     this.hubConnection

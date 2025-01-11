@@ -2,5 +2,5 @@ export const environment = {
 
     
     production:false,
-    apiUrl:'https://localhost:5001/api/'
+    apiUrl:'http://nedzad6-001-site1.mtempurl.com/api/'
 };
