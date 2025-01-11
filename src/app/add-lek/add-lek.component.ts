@@ -21,7 +21,7 @@ private http=inject(HttpClient);
   uploader: FileUploader;
   hasBaseDropZoneOver: boolean = false;
   imagePreviewUrl: string | ArrayBuffer | null = null;
-baseUrl=environment.apiUrl;
+
   constructor(private fb: FormBuilder) {
     this.lekForm = this.fb.group({
       naziv: ['', [Validators.required, Validators.minLength(3)]],
@@ -84,7 +84,7 @@ baseUrl=environment.apiUrl;
     });
 
     // API Call
-    this.http.post(this.baseUrl+'lek', formData).subscribe({
+    this.http.post('https://nedzad6-001-site1.mtempurl.com/api/lek', formData).subscribe({
       next: (response) => {
         this.toastr.success("Uspesno ste dodali lek!");
         console.log(response);
