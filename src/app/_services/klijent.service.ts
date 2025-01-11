@@ -22,21 +22,21 @@ private router=inject(Router);
   {
 
 
-    return this.http.get<Klijent[]>(this.baseUrl+'klijent',this.getHttpOptions());
+    return this.http.get<Klijent[]>('https://nedzad6-001-site1.mtempurl.com/ap/iklijent',this.getHttpOptions());
 
 
   }
   getKlijentByName(naziv:string)
   {
-    return this.http.get<Klijent[]>(this.baseUrl+'klijent/search?naziv='+naziv,this.getHttpOptions())
+    return this.http.get<Klijent[]>('https://nedzad6-001-site1.mtempurl.com/api/klijent/search?naziv='+naziv,this.getHttpOptions())
   }  
   getKlijentById(id:number)
   {
-    return this.http.get<Klijent>(this.baseUrl+'klijent/'+id,this.getHttpOptions())
+    return this.http.get<Klijent>('https://nedzad6-001-site1.mtempurl.com/api/klijent/'+id,this.getHttpOptions())
   }  
   AddKlijent(klijent:Klijent | undefined){
     
-        this.http.post(this.baseUrl+'klijent', klijent).subscribe({
+        this.http.post('https://nedzad6-001-site1.mtempurl.com/klijent', klijent).subscribe({
           next: (response) => {
             
             this.toastr.success("Uspesno ste dodali klijenta!");
