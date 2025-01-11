@@ -1,6 +1,6 @@
 [[build]]
 base="client"
-command="npm run build:prod"
+command="npm run build"
 publsih="dist/browser"
 
 [redirects]
