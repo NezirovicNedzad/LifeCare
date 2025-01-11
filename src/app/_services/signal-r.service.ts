@@ -45,7 +45,7 @@ private http=inject(HttpClient);
   }
 
   checkForNewReceipt(): Observable<any> {
-      return this.http.get<any>(this.baseUrl+'recept/check');
+      return this.http.get<any>('https://nedzad6-001-site1.mtempurl.com/api/recept/check');
       
     }
 }
