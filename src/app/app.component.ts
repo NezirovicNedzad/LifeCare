@@ -6,7 +6,6 @@ import { AccountService } from './_services/account.service';
 import { HomeComponent } from "./home/home.component";
 import { RouterOutlet } from '@angular/router';
 import { NgxSpinnerComponent } from 'ngx-spinner';
-import { CheckForReceptsComponent } from "./check-for-recepts/check-for-recepts.component";
 
 import { SignalRService } from './_services/signal-r.service';
   // Add this import
