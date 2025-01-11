@@ -1,9 +1,8 @@
-[[build]]
-base="client"
-command="npm run build:prod"
-publsih="dist/browser"
+[build]
+  command = "npm run build"
+  publish = "build"
 
-[redirects]
-from="/*"
-to="/index.html"
-status=200
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
