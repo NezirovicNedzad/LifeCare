@@ -18,12 +18,12 @@ private toastr=inject(ToastrService);
 
   getLekovi()
   {
-    return this.http.get<Lek[]>(this.baseUrl+'lek',this.getHttpOptions());
+    return this.http.get<Lek[]>('https://nedzad6-001-site1.mtempurl.com/api/lek',this.getHttpOptions());
   }
 
   getLek(id:number)
   {
-    return this.http.get<Lek>(this.baseUrl+'lek/'+id,this.getHttpOptions())
+    return this.http.get<Lek>('https://nedzad6-001-site1.mtempurl.com/api/lek/'+id,this.getHttpOptions())
   }
   getLekByName(naziv: string = '', pageNumber: number = 1,pageSize?:number ): Observable<any> {
     
@@ -36,18 +36,18 @@ private toastr=inject(ToastrService);
       .set('pageSize',pageSize.toString())
       .set('pageNumber', pageNumber.toString());
   
-    return this.http.get<any>(this.baseUrl + 'lek/search', {
+    return this.http.get<any>('https://nedzad6-001-site1.mtempurl.com/api/lek/search', {
       params: params,
       ...this.getHttpOptions(),
     });
   }
   getLekNaRecept()
   {
-    return this.http.get<Lek[]>(this.baseUrl+'lek/recept',this.getHttpOptions())
+    return this.http.get<Lek[]>('https://nedzad6-001-site1.mtempurl.com/api/lek/recept',this.getHttpOptions())
   }
   obnoviZalihe(id:number,kolicna:number){
   
-      this.http.put(this.baseUrl+`lek/zalihe?id=${id}&kolicina=${kolicna}`,{} ).subscribe({
+      this.http.put(`https://nedzad6-001-site1.mtempurl.com/api/lek/zalihe?id=${id}&kolicina=${kolicna}`,{} ).subscribe({
         next: (response) => {
         
           this.toastr.success("Uspesno ste obnovili zalihe recept!")

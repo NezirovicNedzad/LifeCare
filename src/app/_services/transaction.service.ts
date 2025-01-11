@@ -25,26 +25,26 @@ private data=inject(SenderService);
 
   getPopust(id:number | undefined,cena:number)
   {
-   return  this.http.get<Popust>(this.baseUrl+'transakcija/popust/'+id+'?cenaTotal='+cena);
+   return  this.http.get<Popust>('https://nedzad6-001-site1.mtempurl.com/api/transakcija/popust/'+id+'?cenaTotal='+cena);
   }
   getKlijentTrans(id:number,pageSize:number,pageNumber:number)
   {
-   return  this.http.get<any>(this.baseUrl+'transakcija/klijent/'+id+'?pageSize='+pageSize+'&pageNumber='+pageNumber);
+   return  this.http.get<any>('https://nedzad6-001-site1.mtempurl.com/api/transakcija/klijent/'+id+'?pageSize='+pageSize+'&pageNumber='+pageNumber);
   }
   getTrans(pageSize:number,pageNumber:number)
   {
-   return  this.http.get<any>(this.baseUrl+'transakcija/?pageSize='+pageSize+'&pageNumber='+pageNumber);
+   return  this.http.get<any>('https://nedzad6-001-site1.mtempurl.com/api/transakcija/?pageSize='+pageSize+'&pageNumber='+pageNumber);
   }
 
   getCenaKlijentovihTransakcija(id:number)
   {
-    return  this.http.get<any>(this.baseUrl+'transakcija/klijent/'+id+'/cena'); 
+    return  this.http.get<any>('https://nedzad6-001-site1.mtempurl.com/api/transakcija/klijent/'+id+'/cena'); 
   }
 
   dodajTransakciju(order:Order | undefined)
   {
 
-    this.http.post(this.baseUrl+'transakcija', order).subscribe({
+    this.http.post('https://nedzad6-001-site1.mtempurl.com/api/transakcija', order).subscribe({
       next: (response) => {
         console.log('Transaction successful:', response);
         this.toastr.success("Uspesna transakcija!");

@@ -7,7 +7,7 @@ import { HomeComponent } from "./home/home.component";
 import { RouterOutlet } from '@angular/router';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 import { CheckForReceptsComponent } from "./check-for-recepts/check-for-recepts.component";
-import { PoolingService } from './_services/pooling.service';
+
 import { SignalRService } from './_services/signal-r.service';
   // Add this import
 
@@ -21,7 +21,6 @@ import { SignalRService } from './_services/signal-r.service';
 export class AppComponent implements OnInit {
   
   private accountService=inject(AccountService);
-  private pollingService=inject(PoolingService);
   private signalRService=inject(SignalRService);
   constructor() {}
 

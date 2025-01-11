@@ -23,7 +23,7 @@ export class ReceptService {
    loadKlijentRecepts(idKlijenta:number)
    {
     
-   return this.http.get<ReceptsForKlijent[]>(this.baseUrl+'recept/klijent/'+idKlijenta);
+   return this.http.get<ReceptsForKlijent[]>('https://nedzad6-001-site1.mtempurl.com/api/recept/klijent/'+idKlijenta);
    }
    
    loadKlijentReceptsPagin(idKlijenta:number,pageNumber:number,pageSize:number)
@@ -31,13 +31,13 @@ export class ReceptService {
     const params = new HttpParams()
           .set('pageSize',pageSize.toString())
           .set('pageNumber', pageNumber.toString());
-   return this.http.get<any>(this.baseUrl+'recept/klijentPagin/'+idKlijenta,{params,...this.getHttpOptions()});
+   return this.http.get<any>('https://nedzad6-001-site1.mtempurl.com/api/recept/klijentPagin/'+idKlijenta,{params,...this.getHttpOptions()});
    }
 
 
    AddRecept(recept:Recept | undefined){
 
-    this.http.post(this.baseUrl+'recept', recept).subscribe({
+    this.http.post('https://nedzad6-001-site1.mtempurl.com/api/recept', recept).subscribe({
       next: (response) => {
       
         this.toastr.success("Uspesno ste dodali recept!");
